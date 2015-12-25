@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:com.wareshopc.app.truechalk.chalkintent="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_item_new_chalk"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/new_chalk_event"
+        com.wareshopc.app.truechalk.chalkintent:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menu_item_show_subtitle"
+        android:title="@string/show_subtitle"
+        com.wareshopc.app.truechalk.chalkintent:showAsAction="ifRoom"/>
+
+</menu>

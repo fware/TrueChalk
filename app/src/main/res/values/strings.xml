@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TrueChalk</string>
+    <string name="title_activity_chalk">TrueChalkActivity</string>
+    <string name="chalk_title_hint">Enter a title for the trueChalk.</string>
+    <string name="chalk_title_label">Title</string>
+    <string name="chalk_details_label">Details</string>
+    <string name="chalk_solved_label">Solved?</string>
+    <string name="chalk_collection_title">Chalk Collection</string>
+    <string name="date_picker_title">Date of Event:</string>
+    <string name="time_picker_title">Time of Event:</string>
+    <string name="new_chalk_event">New Chalk Collection</string>
+    <string name="show_subtitle">Show Subtitle</string>
+    <string name="hide_subtitle">Hide Subtitle</string>
+    <string name="subtitle">If you see something, say something.</string>
+    <string name="delete_chalk">Delete</string>
+    <string name="chalk_title">Event Title</string>
+    <string name="chalk_event_date">Event Date</string>
+    <string name="no_data">There are no records</string>
+    <string name="take">Take!</string>
+    <string name="chalk_event_text">Choose Event Collection</string>
+    <string name="chalk_event_report_text">Send Chalk Event Report</string>
+    <string name="chalk_report">%1$s!
+The trueChalk was discovered on %2$s. %3$s, and %4$s
+</string>
+    <string name="chalk_report_solved">The case is solved</string>
+    <string name="chalk_report_unsolved">The case is not solved</string>
+    <string name="chalk_report_no_suspect">There is no suspect.</string>
+    <string name="chalk_report_event">The suspect is %s.</string>
+    <string name="chalk_report_subject">TrueChalk Report</string>
+    <string name="send_report">Send trueChalk report via</string>
+    <string name="picture">Picture</string>
+    <string name="description_info">Info</string>
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+
+</resources>
