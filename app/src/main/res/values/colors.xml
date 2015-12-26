@@ -17,4 +17,10 @@
 <resources>
     <color name="control_background">#CC4285F4</color>
     <color name="amber_400">#FFCA28</color>
+    <color name="green_900">#33691E</color>
+    <color name="deep_purple_A700">#6200EA</color>
+    <color name="lighter_rustlike">#993300</color>
+    <color name="rustlike">#993300</color>
+    <color name="med_rustlike">#663300</color>
+    <color name="darker_rustlike">#660000</color>
 </resources>
