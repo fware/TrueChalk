@@ -8,4 +8,12 @@
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <!-- Smaller than default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_small_horizontal_margin">10dp</dimen>
+    <dimen name="activity_small_vertical_margin">10dp</dimen>
+    <!-- Smaller than default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_small_vertical_spacing">10dp</dimen>
+    <dimen name="nav_header_small_height">120dp</dimen>
+    <dimen name="small_fab_margin">10dp</dimen>
+
 </resources>

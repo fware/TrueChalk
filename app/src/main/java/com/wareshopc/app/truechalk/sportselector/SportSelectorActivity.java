@@ -1,6 +1,5 @@
 package com.wareshopc.app.truechalk.sportselector;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -20,11 +20,13 @@ import com.wareshopc.app.truechalk.R;
 
 public class SportSelectorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ImageView mSoccerImageView;
-    private ImageView mFootballImageView;
-    private ImageView mBasketballImageView;
-    private ImageView mBaseballImageView;
-    private ImageView mVolleyballImageView;
+//    private ImageView mSoccerImageView;
+    private ImageButton mSoccerImageButton;
+    private ImageButton mFootballImageButton;
+    private ImageButton mBasketballImageButton;
+    private ImageButton mBaseballImageButton;
+    private ImageButton mVolleyballImageButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,54 +50,64 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.sports_selector_rlayout);
+        RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.sports_selector_llayout);
         rLayout.setBackgroundColor(getResources().getColor(R.color.amber_400));
 
 
-        mSoccerImageView = (ImageView) findViewById(R.id.soccerImageView);
-        mSoccerImageView.setImageResource(R.drawable.soccer);
-        mSoccerImageView.setClickable(true);
-        mSoccerImageView.setOnClickListener(new View.OnClickListener() {
+//        mSoccerImageView = (ImageView) findViewById(R.id.soccerImageView);
+//        mSoccerImageView.setImageResource(R.drawable.soccer);
+//        mSoccerImageView.setClickable(true);
+//        mSoccerImageView.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                System.out.println("soccer intent placeholder");
+//            }
+//        });
+
+        mSoccerImageButton = (ImageButton) findViewById(R.id.soccerImageButton);
+        mSoccerImageButton.setImageResource(R.drawable.soccer96);
+        mSoccerImageButton.setClickable(true);
+        mSoccerImageButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("soccer intent placeholder");
+                System.out.println("Call Soccer Intent from ImageButton");
             }
         });
 
-        mFootballImageView = (ImageView) findViewById(R.id.footballImageView);
-        mFootballImageView.setImageResource(R.drawable.football);
-        mFootballImageView.setClickable(true);
-        mFootballImageView.setOnClickListener(new View.OnClickListener() {
+        mFootballImageButton = (ImageButton) findViewById(R.id.footballImageButton);
+        mFootballImageButton.setImageResource(R.drawable.football96);
+        mFootballImageButton.setClickable(true);
+        mFootballImageButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("placeholder");
+                System.out.println("Call Football Intent from ImageButton");
             }
         });
 
-        mBasketballImageView = (ImageView) findViewById(R.id.basketballImageView);
-        mBasketballImageView.setImageResource(R.drawable.basketball);
-        mBasketballImageView.setClickable(true);
-        mBasketballImageView.setOnClickListener(new View.OnClickListener() {
+        mBasketballImageButton = (ImageButton) findViewById(R.id.basketballImageButton);
+        mBasketballImageButton.setImageResource(R.drawable.basketball96);
+        mBasketballImageButton.setClickable(true);
+        mBasketballImageButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("placeholder");
+                System.out.println("Call Basketball Intent from ImageButton");
             }
         });
 
-        mBaseballImageView = (ImageView) findViewById(R.id.baseballImageView);
-        mBaseballImageView.setImageResource(R.drawable.baseball);
-        mBaseballImageView.setClickable(true);
-        mBaseballImageView.setOnClickListener(new View.OnClickListener() {
+        mBaseballImageButton = (ImageButton) findViewById(R.id.baseballImageButton);
+        mBaseballImageButton.setImageResource(R.drawable.baseball96);
+        mBaseballImageButton.setClickable(true);
+        mBaseballImageButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("placeholder");
+                System.out.println("Call Baseball Intent from ImageButton");
             }
         });
 
-        mVolleyballImageView = (ImageView) findViewById(R.id.volleyballImageView);
-        mVolleyballImageView.setImageResource(R.drawable.volleyball);
-        mVolleyballImageView.setClickable(true);
-        mVolleyballImageView.setOnClickListener(new View.OnClickListener() {
+        mVolleyballImageButton = (ImageButton) findViewById(R.id.volleyballImageButton);
+        mVolleyballImageButton.setImageResource(R.drawable.volleyball96);
+        mVolleyballImageButton.setClickable(true);
+        mVolleyballImageButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("placeholder");
+                System.out.println("Call Volleyball Intent from ImageButton");
             }
         });
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
