@@ -15,5 +15,6 @@
  limitations under the License.
 -->
 <resources>
-    <color name="control_background">#cc4285f4</color>
+    <color name="control_background">#CC4285F4</color>
+    <color name="amber_400">#FFCA28</color>
 </resources>
