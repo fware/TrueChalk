@@ -11,14 +11,14 @@ import java.util.UUID;
 public class BasketballChalk {
 
     private static final String JSON_ID = "id";
-    private static final String JSON_TITLE = "title";
+    private static final String JSON_EVENTNAME = "eventname";
     private static final String JSON_DATE = "date";
     private static final String JSON_PHOTO = "photo";
     private static final String JSON_SOLVED = "solved";
     private static final String JSON_SUSPECT = "suspect";
 
     private UUID mId;
-    private String mTitle;
+    private String mEventName;
     private Date mDate;
     private boolean mSolved;
     private Photo mPhoto;
@@ -32,14 +32,14 @@ public class BasketballChalk {
 
     public BasketballChalk(JSONObject json) throws JSONException {
         mId = UUID.fromString(json.getString(JSON_ID));
-        if (json.has(JSON_TITLE)) {
-            mTitle = json.getString(JSON_TITLE);
+        if (json.has(JSON_EVENTNAME)) {
+            mEventName = json.getString(JSON_EVENTNAME);
             if (json.has(JSON_PHOTO))
                 mPhoto = new Photo(json.getJSONObject(JSON_PHOTO));
         }
-        if (json.has(JSON_SUSPECT))
-            mSuspect = json.getString(JSON_SUSPECT);
-        mSolved = json.getBoolean(JSON_SOLVED);
+        //if (json.has(JSON_SUSPECT))
+        //    mSuspect = json.getString(JSON_SUSPECT);
+        //mSolved = json.getBoolean(JSON_SOLVED);
         mDate = new Date(json.getLong(JSON_DATE));
     }
 
@@ -47,12 +47,12 @@ public class BasketballChalk {
     public JSONObject toJSON() throws JSONException {
         JSONObject json = new JSONObject();
         json.put(JSON_ID, mId.toString());
-        json.put(JSON_TITLE, mTitle);
+        json.put(JSON_EVENTNAME, mEventName);
         json.put(JSON_DATE, mDate.getTime());
-        json.put(JSON_SOLVED, mSolved);
+        //json.put(JSON_SOLVED, mSolved);
         if (mPhoto != null)
             json.put(JSON_PHOTO, mPhoto.toJSON());
-        json.put(JSON_SUSPECT, mSuspect);
+        //json.put(JSON_SUSPECT, mSuspect);
         return json;
     }
 
@@ -73,15 +73,15 @@ public class BasketballChalk {
 
     @Override
     public String toString() {
-        return mTitle;
+        return mEventName;
     }
 
     public String getTitle() {
-        return mTitle;
+        return mEventName;
     }
 
     public void setTitle(String title) {
-        mTitle = title;
+        mEventName = title;
     }
 
     public UUID getId() {

@@ -51,8 +51,8 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.sports_selector_llayout);
-        rLayout.setBackgroundColor(getResources().getColor(R.color.amber_400));
+        RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.sports_selector_rlayout);
+        rLayout.setBackgroundColor(getResources().getColor(R.color.lighter_rustlike));
 
 
 //        mSoccerImageView = (ImageView) findViewById(R.id.soccerImageView);

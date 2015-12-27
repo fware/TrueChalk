@@ -29,6 +29,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.wareshopc.app.truechalk.DatePickerFragment;
 import com.wareshopc.app.truechalk.ImageFragment;
@@ -52,7 +53,7 @@ public class BasketballChalkFragment extends Fragment {
     private static final int REQUEST_DATE = 0;
     private static final int REQUEST_TIME = 1;
     private static final int REQUEST_PHOTO = 2;
-    private static final int REQUEST_CONTACT = 3;
+    //private static final int REQUEST_CONTACT = 3;
     private static final String DIALOG_IMAGE = "image";
     private BasketballChalk mBasketballChalk;
     private EditText mTitleField;
@@ -107,6 +108,9 @@ public class BasketballChalkFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_basketballchalk_1st_screen, parent, false);
 
+        LinearLayout lLayout = (LinearLayout) v.findViewById(R.id.llayout);
+        lLayout.setBackgroundColor(getResources().getColor(R.color.lighter_rustlike));
+
         //getActivity().setTitle(R.string.basketball_chalk_title);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -139,8 +143,7 @@ public class BasketballChalkFragment extends Fragment {
         mDateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                DatePickerFragment dialog = DatePickerFragment
-                        .newInstance(mBasketballChalk.getDate());
+                DatePickerFragment dialog = DatePickerFragment.newInstance(mBasketballChalk.getDate());
                 dialog.setTargetFragment(BasketballChalkFragment.this, REQUEST_DATE);
                 dialog.show(fm, DIALOG_DATE);
             }
@@ -232,9 +235,9 @@ public class BasketballChalkFragment extends Fragment {
         //    }
         //});
 
-        if (mBasketballChalk.getEvent() != null) {
-            mSuspectButton.setText(mBasketballChalk.getEvent());
-        }
+        //if (mBasketballChalk.getEvent() != null) {
+        //    mSuspectButton.setText(mBasketballChalk.getEvent());
+        //}
 
         return v;
     }
@@ -273,7 +276,9 @@ public class BasketballChalkFragment extends Fragment {
                 mCallbacks.onChalkUpdated(mBasketballChalk);
                 showPhoto();
             }
-        } else if (requestCode == REQUEST_CONTACT) {
+        }
+        /*
+        else if (requestCode == REQUEST_CONTACT) {
             Uri contactUri = data.getData();
             // Specify which fields you want your query to return
             // values for.
@@ -298,6 +303,7 @@ public class BasketballChalkFragment extends Fragment {
             mSuspectButton.setText(suspect);
             c.close();
         }
+        */
     }
 
     @Override

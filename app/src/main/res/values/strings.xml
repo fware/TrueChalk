@@ -9,6 +9,8 @@
     <string name="date_picker_title">Date of Event:</string>
     <string name="time_picker_title">Time of Event:</string>
     <string name="new_chalk_event">New Chalk Collection</string>
+    <string name="finish_button_label">Finish</string>
+    <string name="start_collecting_stats">Start Collecting Stats</string>
     <!--string name="show_subtitle">Show Subtitle</string>
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle">If you see something, say something.</string-->
