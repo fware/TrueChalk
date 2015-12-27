@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.wareshopc.app.truechalk.R;
 import com.wareshopc.app.truechalk.SingleFragmentActivity;
-import com.wareshopc.app.truechalk.TrueChalkPagerActivity;
 
 public class BasketballChalkListActivity extends SingleFragmentActivity
         implements BasketballChalkListFragment.Callbacks, BasketballChalkFragment.Callbacks {
@@ -24,8 +23,8 @@ public class BasketballChalkListActivity extends SingleFragmentActivity
 
     public void onChalkSelected(BasketballChalk basketballChalk) {
         if (findViewById(R.id.detailFragmentContainer) == null) {
-            // Start an instance of TrueChalkPagerActivity
-            Intent i = new Intent(this, TrueChalkPagerActivity.class);
+            // Start an instance of BasketballChalkPagerActivity
+            Intent i = new Intent(this, BasketballChalkPagerActivity.class);
             i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, basketballChalk.getId());
             startActivity(i);
         } else {

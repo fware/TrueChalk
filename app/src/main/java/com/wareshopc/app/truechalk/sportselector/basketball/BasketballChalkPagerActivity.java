@@ -1,4 +1,4 @@
-package com.wareshopc.app.truechalk;
+package com.wareshopc.app.truechalk.sportselector.basketball;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,14 +7,15 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 
+import com.wareshopc.app.truechalk.R;
+import com.wareshopc.app.truechalk.TrueChalkLab;
 import com.wareshopc.app.truechalk.sportselector.basketball.BasketballChalk;
 import com.wareshopc.app.truechalk.sportselector.basketball.BasketballChalkFragment;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class TrueChalkPagerActivity extends ActionBarActivity
-        implements BasketballChalkFragment.Callbacks {
+public class BasketballChalkPagerActivity extends ActionBarActivity implements BasketballChalkFragment.Callbacks {
 
     private ViewPager mViewPager;
     private ArrayList<BasketballChalk> mBasketballChalks;

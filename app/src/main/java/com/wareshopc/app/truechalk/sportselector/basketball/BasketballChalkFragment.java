@@ -105,7 +105,9 @@ public class BasketballChalkFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_chalk, parent, false);
+        View v = inflater.inflate(R.layout.fragment_basketballchalk_1st_screen, parent, false);
+
+        //getActivity().setTitle(R.string.basketball_chalk_title);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             if (NavUtils.getParentActivityName(getActivity()) != null) {
@@ -117,8 +119,7 @@ public class BasketballChalkFragment extends Fragment {
         mTitleField = (EditText) v.findViewById(R.id.chalk_event_title);
         mTitleField.setText(mBasketballChalk.getTitle());
         mTitleField.addTextChangedListener(new TextWatcher() {
-            public void onTextChanged(CharSequence c, int start, int before,
-                                      int count) {
+            public void onTextChanged(CharSequence c, int start, int before, int count) {
                 mBasketballChalk.setTitle(c.toString());
                 mCallbacks.onChalkUpdated(mBasketballChalk);
                 getActivity().setTitle(mBasketballChalk.getTitle());
@@ -158,16 +159,16 @@ public class BasketballChalkFragment extends Fragment {
 
         updateDateAndTime();
 
-        mSolvedCheckBox = (CheckBox) v.findViewById(R.id.chalk_completed);
-        mSolvedCheckBox.setChecked(mBasketballChalk.isSolved());
-        mSolvedCheckBox
-                .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        mBasketballChalk.setSolved(isChecked);
-                        mCallbacks.onChalkUpdated(mBasketballChalk);
-                    }
-                });
+        //mSolvedCheckBox = (CheckBox) v.findViewById(R.id.chalk_completed);
+        //mSolvedCheckBox.setChecked(mBasketballChalk.isSolved());
+        //mSolvedCheckBox
+        //        .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        //            @Override
+        //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        //                mBasketballChalk.setSolved(isChecked);
+        //                mCallbacks.onChalkUpdated(mBasketballChalk);
+        //            }
+        //        });
 
         mPhotoButton = (ImageButton) v.findViewById(R.id.chalk_imageButton);
         mPhotoButton.setOnClickListener(new View.OnClickListener() {
@@ -209,27 +210,27 @@ public class BasketballChalkFragment extends Fragment {
             mPhotoButton.setEnabled(false);
         }
 
-        Button reportButton = (Button) v.findViewById(R.id.chalk_event_reportButton);
-        reportButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("text/plain");
-                i.putExtra(Intent.EXTRA_TEXT, getChalkEventReport());
-                i.putExtra(Intent.EXTRA_SUBJECT,
-                        getString(R.string.chalk_report_subject));
-                i = Intent.createChooser(i, getString(R.string.send_report));
-                startActivity(i);
-            }
-        });
+        //Button reportButton = (Button) v.findViewById(R.id.chalk_event_reportButton);
+        //reportButton.setOnClickListener(new View.OnClickListener() {
+        //    public void onClick(View v) {
+        //        Intent i = new Intent(Intent.ACTION_SEND);
+        //        i.setType("text/plain");
+        //        i.putExtra(Intent.EXTRA_TEXT, getChalkEventReport());
+        //        i.putExtra(Intent.EXTRA_SUBJECT,
+        //                getString(R.string.chalk_report_subject));
+        //        i = Intent.createChooser(i, getString(R.string.send_report));
+        //        startActivity(i);
+        //    }
+        //});
 
-        mSuspectButton = (Button) v.findViewById(R.id.chalk_eventButton);
-        mSuspectButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_PICK,
-                        ContactsContract.Contacts.CONTENT_URI);
-                startActivityForResult(i, REQUEST_CONTACT);
-            }
-        });
+        //mSuspectButton = (Button) v.findViewById(R.id.chalk_eventButton);
+        //mSuspectButton.setOnClickListener(new View.OnClickListener() {
+        //    public void onClick(View v) {
+        //        Intent i = new Intent(Intent.ACTION_PICK,
+        //                ContactsContract.Contacts.CONTENT_URI);
+        //        startActivityForResult(i, REQUEST_CONTACT);
+        //    }
+        //});
 
         if (mBasketballChalk.getEvent() != null) {
             mSuspectButton.setText(mBasketballChalk.getEvent());

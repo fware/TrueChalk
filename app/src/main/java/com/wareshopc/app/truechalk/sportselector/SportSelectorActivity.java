@@ -89,7 +89,7 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
             public void onClick(View v) {
                 //BasketballChalk trueChalk = new BasketballChalk();
                 //TrueChalkLab.get(getApplicationContext()).addChalk(trueChalk);
-                //Intent i = new Intent(getApplicationContext(), TrueChalkPagerActivity.class);
+                //Intent i = new Intent(getApplicationContext(), BasketballChalkPagerActivity.class);
                 //i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, trueChalk.getId());
                 //startActivityForResult(i, 0);
 

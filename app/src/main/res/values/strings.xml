@@ -3,17 +3,15 @@
 
     <string name="app_name">TrueChalk</string>
     <string name="title_activity_chalk">TrueChalkActivity</string>
-    <string name="chalk_title_hint">Enter a title for the basketballChalk.</string>
-    <string name="chalk_title_label">Title</string>
-    <string name="chalk_details_label">Details</string>
+    <string name="chalk_title_hint">Enter title for basketball event.</string>
+    <string name="chalk_event_name_label">Event Name:</string>
     <string name="chalk_solved_label">Solved?</string>
-    <string name="chalk_collection_title">Chalk Collection</string>
     <string name="date_picker_title">Date of Event:</string>
     <string name="time_picker_title">Time of Event:</string>
     <string name="new_chalk_event">New Chalk Collection</string>
-    <string name="show_subtitle">Show Subtitle</string>
+    <!--string name="show_subtitle">Show Subtitle</string>
     <string name="hide_subtitle">Hide Subtitle</string>
-    <string name="subtitle">If you see something, say something.</string>
+    <string name="subtitle">If you see something, say something.</string-->
     <string name="delete_chalk">Delete</string>
     <string name="chalk_title">Event Title</string>
     <string name="chalk_event_date">Event Date</string>

@@ -6,8 +6,8 @@
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/new_chalk_event"
         com.wareshopc.app.truechalk.chalkintent:showAsAction="ifRoom|withText" />
-    <item android:id="@+id/menu_item_show_subtitle"
+    <!--item android:id="@+id/menu_item_show_subtitle"
         android:title="@string/show_subtitle"
-        com.wareshopc.app.truechalk.chalkintent:showAsAction="ifRoom"/>
+        com.wareshopc.app.truechalk.chalkintent:showAsAction="ifRoom"/-->
 
 </menu>

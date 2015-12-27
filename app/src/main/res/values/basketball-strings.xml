@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Strings for basketball -->
+    <string name="basketball_chalk_title">Basketball Chalk</string>
+    <string name="basketballchalk_title_label">Basketball</string>
+    <string name="basketball_chalk_collection_title">Basketball Collection</string>
+
+</resources>
