@@ -7,16 +7,19 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 
+import com.wareshopc.app.truechalk.sportselector.basketball.BasketballChalk;
+import com.wareshopc.app.truechalk.sportselector.basketball.BasketballChalkFragment;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class TrueChalkPagerActivity extends ActionBarActivity
-        implements TrueChalkFragment.Callbacks {
+        implements BasketballChalkFragment.Callbacks {
 
     private ViewPager mViewPager;
-    private ArrayList<TrueChalk> mTrueChalks;
+    private ArrayList<BasketballChalk> mBasketballChalks;
 
-    public void onChalkUpdated(TrueChalk trueChalk) {
+    public void onChalkUpdated(BasketballChalk basketballChalk) {
     }
 
     @Override
@@ -26,19 +29,19 @@ public class TrueChalkPagerActivity extends ActionBarActivity
         mViewPager.setId(R.id.viewPager);
         setContentView(mViewPager);
 
-        mTrueChalks = TrueChalkLab.get(this).getTrueChalks();
+        mBasketballChalks = TrueChalkLab.get(this).getTrueChalks();
         FragmentManager fm = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
 
             @Override
             public int getCount() {
-                return mTrueChalks.size();
+                return mBasketballChalks.size();
             }
 
             @Override
             public Fragment getItem(int pos) {
-                TrueChalk trueChalk = mTrueChalks.get(pos);
-                return TrueChalkFragment.newInstance(trueChalk.getId());
+                BasketballChalk basketballChalk = mBasketballChalks.get(pos);
+                return BasketballChalkFragment.newInstance(basketballChalk.getId());
             }
         });
 
@@ -52,17 +55,17 @@ public class TrueChalkPagerActivity extends ActionBarActivity
                     }
 
                     public void onPageSelected(int pos) {
-                        TrueChalk trueChalk = mTrueChalks.get(pos);
-                        if (trueChalk.getTitle() != null) {
-                            setTitle(trueChalk.getTitle());
+                        BasketballChalk basketballChalk = mBasketballChalks.get(pos);
+                        if (basketballChalk.getTitle() != null) {
+                            setTitle(basketballChalk.getTitle());
                         }
                     }
                 });
 
         UUID chalkId = (UUID) getIntent().getSerializableExtra(
-                TrueChalkFragment.EXTRA_TRUECHALK_ID);
-        for (int i = 0; i < mTrueChalks.size(); i++) {
-            if (mTrueChalks.get(i).getId().equals(chalkId)) {
+                BasketballChalkFragment.EXTRA_TRUECHALK_ID);
+        for (int i = 0; i < mBasketballChalks.size(); i++) {
+            if (mBasketballChalks.get(i).getId().equals(chalkId)) {
                 mViewPager.setCurrentItem(i);
                 break;
             }

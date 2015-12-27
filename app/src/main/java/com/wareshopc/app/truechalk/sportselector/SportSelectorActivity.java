@@ -1,5 +1,6 @@
 package com.wareshopc.app.truechalk.sportselector;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,10 +14,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.wareshopc.app.truechalk.R;
+import com.wareshopc.app.truechalk.sportselector.basketball.BasketballChalkListActivity;
 
 public class SportSelectorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -86,7 +87,14 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
         mBasketballImageButton.setClickable(true);
         mBasketballImageButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("Call Basketball Intent from ImageButton");
+                //BasketballChalk trueChalk = new BasketballChalk();
+                //TrueChalkLab.get(getApplicationContext()).addChalk(trueChalk);
+                //Intent i = new Intent(getApplicationContext(), TrueChalkPagerActivity.class);
+                //i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, trueChalk.getId());
+                //startActivityForResult(i, 0);
+
+                Intent i = new Intent(getApplicationContext(), BasketballChalkListActivity.class);
+                startActivity(i);
             }
         });
 

@@ -3,6 +3,8 @@ package com.wareshopc.app.truechalk;
 
 import android.content.Context;
 
+import com.wareshopc.app.truechalk.sportselector.basketball.BasketballChalk;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONTokener;
@@ -27,8 +29,8 @@ public class TrueChalkJSONSerializer {
         mFilename = f;
     }
 
-    public ArrayList<TrueChalk> loadTrueChalks() throws IOException, JSONException {
-        ArrayList<TrueChalk> trueChalks = new ArrayList<TrueChalk>();
+    public ArrayList<BasketballChalk> loadTrueChalks() throws IOException, JSONException {
+        ArrayList<BasketballChalk> basketballChalks = new ArrayList<BasketballChalk>();
         BufferedReader reader = null;
         try {
             // open and read the file into a StringBuilder
@@ -42,9 +44,9 @@ public class TrueChalkJSONSerializer {
             }
             // parse the JSON using JSONTokener
             JSONArray array = (JSONArray) new JSONTokener(jsonString.toString()).nextValue();
-            // build the array of trueChalks from JSONObjects
+            // build the array of basketballChalks from JSONObjects
             for (int i = 0; i < array.length(); i++) {
-                trueChalks.add(new TrueChalk(array.getJSONObject(i)));
+                basketballChalks.add(new BasketballChalk(array.getJSONObject(i)));
             }
         } catch (FileNotFoundException e) {
             // we will ignore this one, since it happens when we start fresh
@@ -52,13 +54,13 @@ public class TrueChalkJSONSerializer {
             if (reader != null)
                 reader.close();
         }
-        return trueChalks;
+        return basketballChalks;
     }
 
-    public void saveTrueChalks(ArrayList<TrueChalk> trueChalks) throws JSONException, IOException {
+    public void saveTrueChalks(ArrayList<BasketballChalk> basketballChalks) throws JSONException, IOException {
         // Build an array in JSON
         JSONArray array = new JSONArray();
-        for (TrueChalk c : trueChalks)
+        for (BasketballChalk c : basketballChalks)
             array.put(c.toJSON());
 
         // Write the file to disk

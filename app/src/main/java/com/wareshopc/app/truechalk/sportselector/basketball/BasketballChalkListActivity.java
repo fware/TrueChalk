@@ -1,16 +1,20 @@
-package com.wareshopc.app.truechalk;
+package com.wareshopc.app.truechalk.sportselector.basketball;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-public class TrueChalkListActivity extends SingleFragmentActivity
-        implements TrueChalkListFragment.Callbacks, TrueChalkFragment.Callbacks {
+import com.wareshopc.app.truechalk.R;
+import com.wareshopc.app.truechalk.SingleFragmentActivity;
+import com.wareshopc.app.truechalk.TrueChalkPagerActivity;
+
+public class BasketballChalkListActivity extends SingleFragmentActivity
+        implements BasketballChalkListFragment.Callbacks, BasketballChalkFragment.Callbacks {
 
     @Override
     protected Fragment createFragment() {
-        return new TrueChalkListFragment();
+        return new BasketballChalkListFragment();
     }
 
     @Override
@@ -18,18 +22,18 @@ public class TrueChalkListActivity extends SingleFragmentActivity
         return R.layout.activity_masterdetail;
     }
 
-    public void onChalkSelected(TrueChalk trueChalk) {
+    public void onChalkSelected(BasketballChalk basketballChalk) {
         if (findViewById(R.id.detailFragmentContainer) == null) {
             // Start an instance of TrueChalkPagerActivity
             Intent i = new Intent(this, TrueChalkPagerActivity.class);
-            i.putExtra(TrueChalkFragment.EXTRA_TRUECHALK_ID, trueChalk.getId());
+            i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, basketballChalk.getId());
             startActivity(i);
         } else {
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
 
             Fragment oldDetail = fm.findFragmentById(R.id.detailFragmentContainer);
-            Fragment newDetail = TrueChalkFragment.newInstance(trueChalk.getId());
+            Fragment newDetail = BasketballChalkFragment.newInstance(basketballChalk.getId());
 
             if (oldDetail != null) {
                 ft.remove(oldDetail);
@@ -40,9 +44,9 @@ public class TrueChalkListActivity extends SingleFragmentActivity
         }
     }
 
-    public void onChalkUpdated(TrueChalk trueChalk) {
+    public void onChalkUpdated(BasketballChalk basketballChalk) {
         FragmentManager fm = getSupportFragmentManager();
-        TrueChalkListFragment listFragment = (TrueChalkListFragment)
+        BasketballChalkListFragment listFragment = (BasketballChalkListFragment)
                 fm.findFragmentById(R.id.fragmentContainer);
         listFragment.updateUI();
     }
