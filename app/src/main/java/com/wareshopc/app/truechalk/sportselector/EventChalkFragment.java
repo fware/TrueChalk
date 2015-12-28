@@ -1,17 +1,14 @@
-package com.wareshopc.app.truechalk.sportselector.basketball;
+package com.wareshopc.app.truechalk.sportselector;
 
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.drawable.BitmapDrawable;
 import android.hardware.Camera;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
@@ -25,7 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -45,9 +41,9 @@ import com.wareshopc.app.truechalk.camera2.Camera2Activity;
 import java.util.Date;
 import java.util.UUID;
 
-public class BasketballChalkFragment extends Fragment {
+public class EventChalkFragment extends Fragment {
     public static final String EXTRA_TRUECHALK_ID = "com.wareshopc.app.truechalk.chalk_id";
-    private static final String TAG = "BasketballChalkFragment";
+    private static final String TAG = "EventChalkFragment";
     private static final String DIALOG_DATE = "date";
     private static final String DIALOG_TIME = "time";
     private static final int REQUEST_DATE = 0;
@@ -55,7 +51,7 @@ public class BasketballChalkFragment extends Fragment {
     private static final int REQUEST_PHOTO = 2;
     //private static final int REQUEST_CONTACT = 3;
     private static final String DIALOG_IMAGE = "image";
-    private BasketballChalk mBasketballChalk;
+    private EventChalk mEventChalk;
     private EditText mTitleField;
     private Button mDateButton;
     private Button mTimeButton;
@@ -65,11 +61,11 @@ public class BasketballChalkFragment extends Fragment {
     private Button mSuspectButton;
     private Callbacks mCallbacks;
 
-    public static BasketballChalkFragment newInstance(UUID chalkId) {
+    public static EventChalkFragment newInstance(UUID chalkId) {
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_TRUECHALK_ID, chalkId);
 
-        BasketballChalkFragment fragment = new BasketballChalkFragment();
+        EventChalkFragment fragment = new EventChalkFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -90,12 +86,12 @@ public class BasketballChalkFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         UUID chalkId = (UUID) getArguments().getSerializable(EXTRA_TRUECHALK_ID);
-        mBasketballChalk = TrueChalkLab.get(getActivity()).getChalk(chalkId);
+        mEventChalk = TrueChalkLab.get(getActivity()).getChalk(chalkId);
         setHasOptionsMenu(true);
     }
 
     private void updateDateAndTime() {
-        Date d = mBasketballChalk.getDate();
+        Date d = mEventChalk.getDate();
         CharSequence c = DateFormat.format("EEEE, MMM dd, yyyy", d);
         CharSequence t = DateFormat.format("h:mm a", d);
         mDateButton.setText(c);
@@ -121,12 +117,12 @@ public class BasketballChalkFragment extends Fragment {
         }
 
         mTitleField = (EditText) v.findViewById(R.id.chalk_event_title);
-        mTitleField.setText(mBasketballChalk.getTitle());
+        mTitleField.setText(mEventChalk.getTitle());
         mTitleField.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence c, int start, int before, int count) {
-                mBasketballChalk.setTitle(c.toString());
-                mCallbacks.onChalkUpdated(mBasketballChalk);
-                getActivity().setTitle(mBasketballChalk.getTitle());
+                mEventChalk.setTitle(c.toString());
+                mCallbacks.onChalkUpdated(mEventChalk);
+                getActivity().setTitle(mEventChalk.getTitle());
             }
 
             public void beforeTextChanged(CharSequence c, int start, int count,
@@ -143,8 +139,8 @@ public class BasketballChalkFragment extends Fragment {
         mDateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                DatePickerFragment dialog = DatePickerFragment.newInstance(mBasketballChalk.getDate());
-                dialog.setTargetFragment(BasketballChalkFragment.this, REQUEST_DATE);
+                DatePickerFragment dialog = DatePickerFragment.newInstance(mEventChalk.getDate());
+                dialog.setTargetFragment(EventChalkFragment.this, REQUEST_DATE);
                 dialog.show(fm, DIALOG_DATE);
             }
         });
@@ -154,8 +150,8 @@ public class BasketballChalkFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 TimePickerFragment dialog = TimePickerFragment
-                        .newInstance(mBasketballChalk.getDate());
-                dialog.setTargetFragment(BasketballChalkFragment.this, REQUEST_TIME);
+                        .newInstance(mEventChalk.getDate());
+                dialog.setTargetFragment(EventChalkFragment.this, REQUEST_TIME);
                 dialog.show(fm, DIALOG_TIME);
             }
         });
@@ -163,13 +159,13 @@ public class BasketballChalkFragment extends Fragment {
         updateDateAndTime();
 
         //mSolvedCheckBox = (CheckBox) v.findViewById(R.id.chalk_completed);
-        //mSolvedCheckBox.setChecked(mBasketballChalk.isSolved());
+        //mSolvedCheckBox.setChecked(mEventChalk.isSolved());
         //mSolvedCheckBox
         //        .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         //            @Override
         //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        //                mBasketballChalk.setSolved(isChecked);
-        //                mCallbacks.onChalkUpdated(mBasketballChalk);
+        //                mEventChalk.setSolved(isChecked);
+        //                mCallbacks.onChalkUpdated(mEventChalk);
         //            }
         //        });
 
@@ -194,7 +190,7 @@ public class BasketballChalkFragment extends Fragment {
         mPhotoView = (ImageView) v.findViewById(R.id.chalk_ImageView);
         mPhotoView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Photo p = mBasketballChalk.getPhoto();
+                Photo p = mEventChalk.getPhoto();
                 if (p == null)
                     return;
                 FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -235,8 +231,8 @@ public class BasketballChalkFragment extends Fragment {
         //    }
         //});
 
-        //if (mBasketballChalk.getEvent() != null) {
-        //    mSuspectButton.setText(mBasketballChalk.getEvent());
+        //if (mEventChalk.getEvent() != null) {
+        //    mSuspectButton.setText(mEventChalk.getEvent());
         //}
 
         return v;
@@ -244,7 +240,7 @@ public class BasketballChalkFragment extends Fragment {
 
     private void showPhoto() {
         // (Re)set the image button's image based on our photo
-        Photo p = mBasketballChalk.getPhoto();
+        Photo p = mEventChalk.getPhoto();
         BitmapDrawable b = null;
         if (p != null) {
             String path = getActivity().getFileStreamPath(p.getFilename()).getAbsolutePath();
@@ -259,21 +255,21 @@ public class BasketballChalkFragment extends Fragment {
             return;
         if (requestCode == REQUEST_DATE) {
             Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
-            mBasketballChalk.setDate(date);
-            mCallbacks.onChalkUpdated(mBasketballChalk);
+            mEventChalk.setDate(date);
+            mCallbacks.onChalkUpdated(mEventChalk);
             updateDateAndTime();
         } else if (requestCode == REQUEST_TIME) {
             Date date = (Date) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
-            mBasketballChalk.setDate(date);
-            mCallbacks.onChalkUpdated(mBasketballChalk);
+            mEventChalk.setDate(date);
+            mCallbacks.onChalkUpdated(mEventChalk);
             updateDateAndTime();
         } else if (requestCode == REQUEST_PHOTO) {
             // Create a new Photo object and attach it to the chalk event
             String filename = data.getStringExtra(Camera1Fragment.EXTRA_PHOTO_FILENAME);
             if (filename != null) {
                 Photo p = new Photo(filename);
-                mBasketballChalk.setPhoto(p);
-                mCallbacks.onChalkUpdated(mBasketballChalk);
+                mEventChalk.setPhoto(p);
+                mCallbacks.onChalkUpdated(mEventChalk);
                 showPhoto();
             }
         }
@@ -298,8 +294,8 @@ public class BasketballChalkFragment extends Fragment {
             // that is your suspect's name.
             c.moveToFirst();
             String suspect = c.getString(0);
-            mBasketballChalk.setSuspect(suspect);
-            mCallbacks.onChalkUpdated(mBasketballChalk);
+            mEventChalk.setSuspect(suspect);
+            mCallbacks.onChalkUpdated(mEventChalk);
             mSuspectButton.setText(suspect);
             c.close();
         }
@@ -339,22 +335,22 @@ public class BasketballChalkFragment extends Fragment {
 
     private String getChalkEventReport() {
         String solvedString = null;
-        if (mBasketballChalk.isSolved()) {
+        if (mEventChalk.isSolved()) {
             solvedString = getString(R.string.chalk_report_solved);
         } else {
             solvedString = getString(R.string.chalk_report_unsolved);
         }
         String dateFormat = "EEE, MMM dd";
-        String dateString = DateFormat.format(dateFormat, mBasketballChalk.getDate()).toString();
+        String dateString = DateFormat.format(dateFormat, mEventChalk.getDate()).toString();
 
-        String suspect = mBasketballChalk.getEvent();
+        String suspect = mEventChalk.getEvent();
         if (suspect == null) {
             suspect = getString(R.string.chalk_report_no_suspect);
         } else {
             suspect = getString(R.string.chalk_report_event, suspect);
         }
         String report = getString(R.string.chalk_report,
-                mBasketballChalk.getTitle(), dateString, solvedString, suspect);
+                mEventChalk.getTitle(), dateString, solvedString, suspect);
         return report;
     }
 
@@ -362,6 +358,6 @@ public class BasketballChalkFragment extends Fragment {
      * Required interface for hosting activities.
      */
     public interface Callbacks {
-        void onChalkUpdated(BasketballChalk basketballChalk);
+        void onChalkUpdated(EventChalk eventChalk);
     }
 }

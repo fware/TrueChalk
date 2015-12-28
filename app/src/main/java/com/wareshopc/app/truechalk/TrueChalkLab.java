@@ -3,7 +3,7 @@ package com.wareshopc.app.truechalk;
 import android.content.Context;
 import android.util.Log;
 
-import com.wareshopc.app.truechalk.sportselector.basketball.BasketballChalk;
+import com.wareshopc.app.truechalk.sportselector.EventChalk;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -13,7 +13,7 @@ public class TrueChalkLab {
     private static final String TAG = "TrueChalkLab";
     private static final String FILENAME = "truechalks.json";
     private static TrueChalkLab sTrueChalkLab;
-    private ArrayList<BasketballChalk> mBasketballChalks;
+    private ArrayList<EventChalk> mEventChalks;
     private TrueChalkJSONSerializer mSerializer;
     private Context mAppContext;
 
@@ -22,9 +22,9 @@ public class TrueChalkLab {
         mSerializer = new TrueChalkJSONSerializer(mAppContext, FILENAME);
 
         try {
-            mBasketballChalks = mSerializer.loadTrueChalks();
+            mEventChalks = mSerializer.loadTrueChalks();
         } catch (Exception e) {
-            mBasketballChalks = new ArrayList<BasketballChalk>();
+            mEventChalks = new ArrayList<EventChalk>();
             Log.e(TAG, "Error loading truechalks: ", e);
         }
     }
@@ -36,17 +36,17 @@ public class TrueChalkLab {
         return sTrueChalkLab;
     }
 
-    public void addChalk(BasketballChalk c) {
-        mBasketballChalks.add(c);
+    public void addChalk(EventChalk c) {
+        mEventChalks.add(c);
     }
 
-    public void deleteChalk(BasketballChalk c) {
-        mBasketballChalks.remove(c);
+    public void deleteChalk(EventChalk c) {
+        mEventChalks.remove(c);
     }
 
     public boolean saveTrueChalks() {
         try {
-            mSerializer.saveTrueChalks(mBasketballChalks);
+            mSerializer.saveTrueChalks(mEventChalks);
             Log.d(TAG, "true chalks saved to file");
             return true;
         } catch (Exception e) {
@@ -55,12 +55,12 @@ public class TrueChalkLab {
         }
     }
 
-    public ArrayList<BasketballChalk> getTrueChalks() {
-        return mBasketballChalks;
+    public ArrayList<EventChalk> getTrueChalks() {
+        return mEventChalks;
     }
 
-    public BasketballChalk getChalk(UUID id) {
-        for (BasketballChalk c : mBasketballChalks) {
+    public EventChalk getChalk(UUID id) {
+        for (EventChalk c : mEventChalks) {
             if (c.getId().equals(id))
                 return c;
         }

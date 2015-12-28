@@ -87,10 +87,10 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
         mBasketballImageButton.setClickable(true);
         mBasketballImageButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //BasketballChalk trueChalk = new BasketballChalk();
+                //EventChalk trueChalk = new EventChalk();
                 //TrueChalkLab.get(getApplicationContext()).addChalk(trueChalk);
                 //Intent i = new Intent(getApplicationContext(), BasketballChalkPagerActivity.class);
-                //i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, trueChalk.getId());
+                //i.putExtra(EventChalkFragment.EXTRA_TRUECHALK_ID, trueChalk.getId());
                 //startActivityForResult(i, 0);
 
                 Intent i = new Intent(getApplicationContext(), BasketballChalkListActivity.class);

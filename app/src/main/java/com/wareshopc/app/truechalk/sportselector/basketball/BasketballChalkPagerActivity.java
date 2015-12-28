@@ -9,18 +9,18 @@ import android.support.v7.app.ActionBarActivity;
 
 import com.wareshopc.app.truechalk.R;
 import com.wareshopc.app.truechalk.TrueChalkLab;
-import com.wareshopc.app.truechalk.sportselector.basketball.BasketballChalk;
-import com.wareshopc.app.truechalk.sportselector.basketball.BasketballChalkFragment;
+import com.wareshopc.app.truechalk.sportselector.EventChalk;
+import com.wareshopc.app.truechalk.sportselector.EventChalkFragment;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class BasketballChalkPagerActivity extends ActionBarActivity implements BasketballChalkFragment.Callbacks {
+public class BasketballChalkPagerActivity extends ActionBarActivity implements EventChalkFragment.Callbacks {
 
     private ViewPager mViewPager;
-    private ArrayList<BasketballChalk> mBasketballChalks;
+    private ArrayList<EventChalk> mEventChalks;
 
-    public void onChalkUpdated(BasketballChalk basketballChalk) {
+    public void onChalkUpdated(EventChalk eventChalk) {
     }
 
     @Override
@@ -30,19 +30,19 @@ public class BasketballChalkPagerActivity extends ActionBarActivity implements B
         mViewPager.setId(R.id.viewPager);
         setContentView(mViewPager);
 
-        mBasketballChalks = TrueChalkLab.get(this).getTrueChalks();
+        mEventChalks = TrueChalkLab.get(this).getTrueChalks();
         FragmentManager fm = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
 
             @Override
             public int getCount() {
-                return mBasketballChalks.size();
+                return mEventChalks.size();
             }
 
             @Override
             public Fragment getItem(int pos) {
-                BasketballChalk basketballChalk = mBasketballChalks.get(pos);
-                return BasketballChalkFragment.newInstance(basketballChalk.getId());
+                EventChalk eventChalk = mEventChalks.get(pos);
+                return EventChalkFragment.newInstance(eventChalk.getId());
             }
         });
 
@@ -56,17 +56,17 @@ public class BasketballChalkPagerActivity extends ActionBarActivity implements B
                     }
 
                     public void onPageSelected(int pos) {
-                        BasketballChalk basketballChalk = mBasketballChalks.get(pos);
-                        if (basketballChalk.getTitle() != null) {
-                            setTitle(basketballChalk.getTitle());
+                        EventChalk eventChalk = mEventChalks.get(pos);
+                        if (eventChalk.getTitle() != null) {
+                            setTitle(eventChalk.getTitle());
                         }
                     }
                 });
 
         UUID chalkId = (UUID) getIntent().getSerializableExtra(
-                BasketballChalkFragment.EXTRA_TRUECHALK_ID);
-        for (int i = 0; i < mBasketballChalks.size(); i++) {
-            if (mBasketballChalks.get(i).getId().equals(chalkId)) {
+                EventChalkFragment.EXTRA_TRUECHALK_ID);
+        for (int i = 0; i < mEventChalks.size(); i++) {
+            if (mEventChalks.get(i).getId().equals(chalkId)) {
                 mViewPager.setCurrentItem(i);
                 break;
             }

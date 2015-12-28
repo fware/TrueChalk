@@ -7,9 +7,11 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.wareshopc.app.truechalk.R;
 import com.wareshopc.app.truechalk.SingleFragmentActivity;
+import com.wareshopc.app.truechalk.sportselector.EventChalk;
+import com.wareshopc.app.truechalk.sportselector.EventChalkFragment;
 
 public class BasketballChalkListActivity extends SingleFragmentActivity
-        implements BasketballChalkListFragment.Callbacks, BasketballChalkFragment.Callbacks {
+        implements BasketballChalkListFragment.Callbacks, EventChalkFragment.Callbacks {
 
     @Override
     protected Fragment createFragment() {
@@ -21,18 +23,18 @@ public class BasketballChalkListActivity extends SingleFragmentActivity
         return R.layout.activity_masterdetail;
     }
 
-    public void onChalkSelected(BasketballChalk basketballChalk) {
+    public void onChalkSelected(EventChalk eventChalk) {
         if (findViewById(R.id.detailFragmentContainer) == null) {
             // Start an instance of BasketballChalkPagerActivity
             Intent i = new Intent(this, BasketballChalkPagerActivity.class);
-            i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, basketballChalk.getId());
+            i.putExtra(EventChalkFragment.EXTRA_TRUECHALK_ID, eventChalk.getId());
             startActivity(i);
         } else {
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
 
             Fragment oldDetail = fm.findFragmentById(R.id.detailFragmentContainer);
-            Fragment newDetail = BasketballChalkFragment.newInstance(basketballChalk.getId());
+            Fragment newDetail = EventChalkFragment.newInstance(eventChalk.getId());
 
             if (oldDetail != null) {
                 ft.remove(oldDetail);
@@ -43,7 +45,7 @@ public class BasketballChalkListActivity extends SingleFragmentActivity
         }
     }
 
-    public void onChalkUpdated(BasketballChalk basketballChalk) {
+    public void onChalkUpdated(EventChalk eventChalk) {
         FragmentManager fm = getSupportFragmentManager();
         BasketballChalkListFragment listFragment = (BasketballChalkListFragment)
                 fm.findFragmentById(R.id.fragmentContainer);
