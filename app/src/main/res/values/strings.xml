@@ -22,14 +22,14 @@
     <string name="chalk_event_text">Choose Event Collection</string>
     <string name="chalk_event_report_text">Send Chalk Event Report</string>
     <string name="chalk_report">%1$s!
-The eventChalk was discovered on %2$s. %3$s, and %4$s
+The basketballChalk was discovered on %2$s. %3$s, and %4$s
 </string>
     <string name="chalk_report_solved">The case is solved</string>
     <string name="chalk_report_unsolved">The case is not solved</string>
     <string name="chalk_report_no_suspect">There is no suspect.</string>
     <string name="chalk_report_event">The suspect is %s.</string>
     <string name="chalk_report_subject">TrueChalk Report</string>
-    <string name="send_report">Send eventChalk report via</string>
+    <string name="send_report">Send basketballChalk report via</string>
     <string name="picture">Picture</string>
     <string name="description_info">Info</string>
     <string name="request_permission">This sample needs camera permission.</string>
@@ -54,5 +54,12 @@ The eventChalk was discovered on %2$s. %3$s, and %4$s
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_basketballitem_list">BasketballItems</string>
+    <string name="title_basketballitem_detail">BasketballItem Detail</string>
+
+    <string name="title_activity_basketball_report">BasketballReportActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="basketball_event_record">Basketball Event Record</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.wareshopc.app.truechalk.sportselector;
+package com.wareshopc.app.truechalk.sportselector.basketball;
 
 import com.wareshopc.app.truechalk.Photo;
 
@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import java.util.Date;
 import java.util.UUID;
 
-public class EventChalk {
+public class BasketballChalk {
 
     private static final String JSON_ID = "id";
     private static final String JSON_EVENTNAME = "eventname";
@@ -24,7 +24,7 @@ public class EventChalk {
     private Photo mPhoto;
     private String mSuspect;
 
-    public EventChalk() {
+    public BasketballChalk() {
         // Generate unique identifier
         mId = UUID.randomUUID();
         mDate = new Date();
@@ -32,7 +32,7 @@ public class EventChalk {
 
    // enum String {Basketball, Baseball, Football, Soccer, Vollyball};
 
-    public EventChalk(JSONObject json) throws JSONException {
+    public BasketballChalk(JSONObject json) throws JSONException {
         mId = UUID.fromString(json.getString(JSON_ID));
         if (json.has(JSON_EVENTNAME)) {
             mEventName = json.getString(JSON_EVENTNAME);

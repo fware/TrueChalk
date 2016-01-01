@@ -24,13 +24,11 @@ import android.widget.TextView;
 
 import com.wareshopc.app.truechalk.R;
 import com.wareshopc.app.truechalk.TrueChalkLab;
-import com.wareshopc.app.truechalk.sportselector.EventChalk;
-import com.wareshopc.app.truechalk.sportselector.EventChalkFragment;
 
 import java.util.ArrayList;
 
 public class BasketballChalkListFragment extends ListFragment {
-    private ArrayList<EventChalk> mEventChalks;
+    private ArrayList<BasketballChalk> mBasketballChalks;
     private boolean mSubtitleVisible;
     private Callbacks mCallbacks;
 
@@ -51,9 +49,9 @@ public class BasketballChalkListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         getActivity().setTitle(R.string.basketball_chalk_collection_title);
-        mEventChalks = TrueChalkLab.get(getActivity()).getTrueChalks();
+        mBasketballChalks = TrueChalkLab.get(getActivity()).getTrueChalks();
 
-        ChalkAdapter adapter = new ChalkAdapter(mEventChalks);
+        ChalkAdapter adapter = new ChalkAdapter(mBasketballChalks);
         setListAdapter(adapter);
 
         setRetainInstance(true);
@@ -126,7 +124,7 @@ public class BasketballChalkListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        EventChalk c = ((ChalkAdapter) getListAdapter()).getItem(position);
+        BasketballChalk c = ((ChalkAdapter) getListAdapter()).getItem(position);
         mCallbacks.onChalkSelected(c);
     }
 
@@ -149,10 +147,10 @@ public class BasketballChalkListFragment extends ListFragment {
         Button addAChalkButton = (Button) getActivity().findViewById(android.R.id.empty);
         addAChalkButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EventChalk eventChalk = new EventChalk();
-                TrueChalkLab.get(getActivity()).addChalk(eventChalk);
+                BasketballChalk basketballChalk = new BasketballChalk();
+                TrueChalkLab.get(getActivity()).addChalk(basketballChalk);
                 Intent i = new Intent(getActivity(), BasketballChalkPagerActivity.class);
-                i.putExtra(EventChalkFragment.EXTRA_TRUECHALK_ID, eventChalk.getId());
+                i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, basketballChalk.getId());
                 startActivityForResult(i, 0);
             }
         });
@@ -162,13 +160,13 @@ public class BasketballChalkListFragment extends ListFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_new_chalk:
-                EventChalk eventChalk = new EventChalk();
-                TrueChalkLab.get(getActivity()).addChalk(eventChalk);
+                BasketballChalk basketballChalk = new BasketballChalk();
+                TrueChalkLab.get(getActivity()).addChalk(basketballChalk);
                 /*Intent i = new Intent(getActivity(), BasketballChalkPagerActivity.class);
-                i.putExtra(EventChalkFragment.EXTRA_TRUECHALK_ID, eventChalk.getId());
+                i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, basketballChalk.getId());
                 startActivityForResult(i, 0);*/
                 ((ChalkAdapter) getListAdapter()).notifyDataSetChanged();
-                mCallbacks.onChalkSelected(eventChalk);
+                mCallbacks.onChalkSelected(basketballChalk);
                 return true;
             /*case R.id.menu_item_show_subtitle:
                 if (((ActionBarActivity) getActivity()).getSupportActionBar().getSubtitle() == null) {
@@ -196,11 +194,11 @@ public class BasketballChalkListFragment extends ListFragment {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int position = info.position;
         ChalkAdapter adapter = (ChalkAdapter) getListAdapter();
-        EventChalk eventChalk = adapter.getItem(position);
+        BasketballChalk basketballChalk = adapter.getItem(position);
 
         switch (item.getItemId()) {
             case R.id.menu_item_delete_chalk:
-                TrueChalkLab.get(getActivity()).deleteChalk(eventChalk);
+                TrueChalkLab.get(getActivity()).deleteChalk(basketballChalk);
                 adapter.notifyDataSetChanged();
                 return true;
         }
@@ -211,12 +209,12 @@ public class BasketballChalkListFragment extends ListFragment {
      * Required interface for hosting activities.
      */
     public interface Callbacks {
-        void onChalkSelected(EventChalk eventChalk);
+        void onChalkSelected(BasketballChalk basketballChalk);
     }
 
-    private class ChalkAdapter extends ArrayAdapter<EventChalk> {
-        public ChalkAdapter(ArrayList<EventChalk> eventChalks) {
-            super(getActivity(), 0, eventChalks);
+    private class ChalkAdapter extends ArrayAdapter<BasketballChalk> {
+        public ChalkAdapter(ArrayList<BasketballChalk> basketballChalks) {
+            super(getActivity(), 0, basketballChalks);
         }
 
         @Override
@@ -226,8 +224,8 @@ public class BasketballChalkListFragment extends ListFragment {
                 convertView = getActivity().getLayoutInflater().inflate(
                         R.layout.list_item_chalk, null);
             }
-            // Configure the view for this EventChalk
-            EventChalk c = getItem(position);
+            // Configure the view for this BasketballChalk
+            BasketballChalk c = getItem(position);
             TextView titleTextView = (TextView) convertView
                     .findViewById(R.id.truechalk_list_item_titleTextView);
             titleTextView.setText(c.getTitle());

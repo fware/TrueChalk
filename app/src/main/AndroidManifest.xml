@@ -37,7 +37,7 @@
         <activity
             android:name=".sportselector.basketball.BasketballChalkPagerActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".sportselector.basketball.BasketballChalkListActivity">
+            android:parentActivityName=".sportselector.basketball.BasketballChalkListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".sportselector.basketball.BasketballChalkListActivity" />
@@ -50,23 +50,28 @@
             android:name=".camera2.Camera2Activity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
-
         <activity
             android:name=".sportselector.SportSelectorActivity"
             android:label="@string/title_activity_sport_selector"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".sportselector.basketball.BasketballChalkListActivity"
             android:label="TrueChalkListActivity" >
         </activity>
 
-        <!--activity
+        <!--
+        activity
             android:name=".login.UserLoginActivity"
             android:label="@string/title_activity_user_login" >
-        </activity-->
+        </activity
+        -->
 
-
+        <activity
+            android:name=".sportselector.basketball.BasketballReportActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_basketball_report"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
     </application>
 
 </manifest>

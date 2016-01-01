@@ -23,4 +23,7 @@
     <color name="rustlike">#993300</color>
     <color name="med_rustlike">#663300</color>
     <color name="darker_rustlike">#660000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

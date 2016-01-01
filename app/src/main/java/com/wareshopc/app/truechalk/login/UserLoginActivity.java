@@ -301,6 +301,10 @@ public class UserLoginActivity extends AppCompatActivity implements LoaderCallba
             showProgress(false);
 
             if (success) {
+
+
+
+
                 Intent sportsIntent = new Intent(mActivity, SportSelectorActivity.class);
                 mActivity.startActivity(sportsIntent);
                 mActivity.finish();

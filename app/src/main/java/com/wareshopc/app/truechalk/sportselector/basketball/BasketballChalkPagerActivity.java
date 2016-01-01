@@ -9,18 +9,16 @@ import android.support.v7.app.ActionBarActivity;
 
 import com.wareshopc.app.truechalk.R;
 import com.wareshopc.app.truechalk.TrueChalkLab;
-import com.wareshopc.app.truechalk.sportselector.EventChalk;
-import com.wareshopc.app.truechalk.sportselector.EventChalkFragment;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class BasketballChalkPagerActivity extends ActionBarActivity implements EventChalkFragment.Callbacks {
+public class BasketballChalkPagerActivity extends ActionBarActivity implements BasketballChalkFragment.Callbacks {
 
     private ViewPager mViewPager;
-    private ArrayList<EventChalk> mEventChalks;
+    private ArrayList<BasketballChalk> mBasketballChalks;
 
-    public void onChalkUpdated(EventChalk eventChalk) {
+    public void onChalkUpdated(BasketballChalk basketballChalk) {
     }
 
     @Override
@@ -30,19 +28,19 @@ public class BasketballChalkPagerActivity extends ActionBarActivity implements E
         mViewPager.setId(R.id.viewPager);
         setContentView(mViewPager);
 
-        mEventChalks = TrueChalkLab.get(this).getTrueChalks();
+        mBasketballChalks = TrueChalkLab.get(this).getTrueChalks();
         FragmentManager fm = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
 
             @Override
             public int getCount() {
-                return mEventChalks.size();
+                return mBasketballChalks.size();
             }
 
             @Override
             public Fragment getItem(int pos) {
-                EventChalk eventChalk = mEventChalks.get(pos);
-                return EventChalkFragment.newInstance(eventChalk.getId());
+                BasketballChalk basketballChalk = mBasketballChalks.get(pos);
+                return BasketballChalkFragment.newInstance(basketballChalk.getId());
             }
         });
 
@@ -56,17 +54,17 @@ public class BasketballChalkPagerActivity extends ActionBarActivity implements E
                     }
 
                     public void onPageSelected(int pos) {
-                        EventChalk eventChalk = mEventChalks.get(pos);
-                        if (eventChalk.getTitle() != null) {
-                            setTitle(eventChalk.getTitle());
+                        BasketballChalk basketballChalk = mBasketballChalks.get(pos);
+                        if (basketballChalk.getTitle() != null) {
+                            setTitle(basketballChalk.getTitle());
                         }
                     }
                 });
 
         UUID chalkId = (UUID) getIntent().getSerializableExtra(
-                EventChalkFragment.EXTRA_TRUECHALK_ID);
-        for (int i = 0; i < mEventChalks.size(); i++) {
-            if (mEventChalks.get(i).getId().equals(chalkId)) {
+                BasketballChalkFragment.EXTRA_TRUECHALK_ID);
+        for (int i = 0; i < mBasketballChalks.size(); i++) {
+            if (mBasketballChalks.get(i).getId().equals(chalkId)) {
                 mViewPager.setCurrentItem(i);
                 break;
             }
