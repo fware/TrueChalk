@@ -2,8 +2,10 @@ package com.wareshopc.app.truechalk.sportselector;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,10 +15,12 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
 import com.wareshopc.app.truechalk.R;
+import com.wareshopc.app.truechalk.sportselector.basketball.BasketballAccumulateActivity;
 import com.wareshopc.app.truechalk.sportselector.basketball.BasketballChalkListActivity;
 import com.wareshopc.app.truechalk.sportselector.basketball.BasketballReportActivity;
 
@@ -28,7 +32,7 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
     private ImageButton mBasketballImageButton;
     private ImageButton mBaseballImageButton;
     private ImageButton mVolleyballImageButton;
-
+    private Vibrator myVib;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.sports_selector_rlayout);
         rLayout.setBackgroundColor(getResources().getColor(R.color.lighter_rustlike));
 
+        myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
 
 //        mSoccerImageView = (ImageView) findViewById(R.id.soccerImageView);
 //        mSoccerImageView.setImageResource(R.drawable.soccer);
@@ -79,7 +84,9 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
         mFootballImageButton.setClickable(true);
         mFootballImageButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("Call Football Intent from ImageButton");
+                //System.out.println("Call Football Intent from ImageButton");
+                Intent i = new Intent(getApplicationContext(), BasketballAccumulateActivity.class);
+                startActivity(i);
             }
         });
 
@@ -94,6 +101,7 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
                 //i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, trueChalk.getId());
                 //startActivityForResult(i, 0);
 
+                myVib.vibrate(100);
                 Intent i = new Intent(getApplicationContext(), BasketballChalkListActivity.class);
                 startActivity(i);
             }
@@ -118,7 +126,6 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
                 startActivity(i);
             }
         });
-
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -180,4 +187,28 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    /**
+     * Created by MacAttack on 1/1/16.
+     */
+    public class CustomHapticListener implements View.OnTouchListener {
+
+        // Duration in milliseconds to vibrate
+        private final int durationMs;
+
+
+        public CustomHapticListener( int ms ) {
+            durationMs = ms;
+        }
+
+        @Override
+        public boolean onTouch( View v, MotionEvent event ) {
+            if( event.getAction() == MotionEvent.ACTION_DOWN ){
+                Vibrator vibe = (Vibrator) getSystemService( VIBRATOR_SERVICE );
+                vibe.vibrate( durationMs );
+            }
+            return true;
+        }
+    }
+
 }

@@ -5,7 +5,7 @@ android {
     buildToolsVersion '23.0.2'
 
     defaultConfig {
-        applicationId "com.wareshopc.app.truechalk.chalkintent"
+        applicationId "com.wareshopc.app.truechalk"
         minSdkVersion 21
         targetSdkVersion 21
         versionCode 1

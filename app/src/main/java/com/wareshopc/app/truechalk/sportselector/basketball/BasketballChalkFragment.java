@@ -57,6 +57,7 @@ public class BasketballChalkFragment extends Fragment {
     private Button mTimeButton;
     private CheckBox mSolvedCheckBox;
     private ImageButton mPhotoButton;
+    private ImageButton mFinishButton;
     private ImageView mPhotoView;
     private Button mSuspectButton;
     private Callbacks mCallbacks;
@@ -208,6 +209,15 @@ public class BasketballChalkFragment extends Fragment {
         if (!hasACamera) {
             mPhotoButton.setEnabled(false);
         }
+
+        Button mFinishButton = (Button) v.findViewById(R.id.chalk_event_finishButton);
+        mFinishButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent i = new Intent(getActivity(), BasketballAccumulateActivity.class);
+                    startActivity(i);
+                }
+            });
+
 
         //Button reportButton = (Button) v.findViewById(R.id.chalk_event_reportButton);
         //reportButton.setOnClickListener(new View.OnClickListener() {

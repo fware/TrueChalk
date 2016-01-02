@@ -8,28 +8,68 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_med_vertical_margin"
-        android:keepScreenOn="true"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="28sp"
-        android:gravity="center"
-        android:text="@string/basketball_event_record" />
-
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
-    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="fill_vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/activity_med_vertical_margin">
+
+                <TextView
+                    android:id="@+id/fullscreen_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_med_vertical_margin"
+                    android:keepScreenOn="true"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="28sp"
+                    android:gravity="center"
+                    android:text="@string/basketball_event_record" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_minutes_id"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="fill">
+
+                <TextView
+                    android:id="@+id/tvMinutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_large_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Minutes:"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/tvChalkMinutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Chalk Minutes"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:layout_gravity="center_vertical" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_points_id"
@@ -86,6 +126,68 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Chalk Assists"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:layout_gravity="center_vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_rebounds_id"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="fill">
+
+                <TextView
+                    android:id="@+id/tvRebounds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_large_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Rebounds:"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/tvChalkRebounds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Chalk Rebounds"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:layout_gravity="center_vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_steals_id"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="fill">
+
+                <TextView
+                    android:id="@+id/tvSteals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_large_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Steals:"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/tvChalkSteals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Chalk Steals"
                     android:textStyle="bold"
                     android:textSize="22sp"
                     android:layout_gravity="center_vertical" />

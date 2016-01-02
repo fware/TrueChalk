@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -71,6 +72,8 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_basketball_report"
             android:theme="@style/FullscreenTheme" >
+        </activity>
+        <activity android:name=".sportselector.basketball.BasketballAccumulateActivity" >
         </activity>
     </application>
 

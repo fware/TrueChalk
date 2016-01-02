@@ -20,5 +20,8 @@
     <dimen name="nav_header_small_height">120dp</dimen>
     <dimen name="small_fab_margin">10dp</dimen>
     <dimen name="app_bar_height">200dp</dimen>
+    <!-- Some custom screen margins -->
+    <dimen name="activity_custom82_margin">84dp</dimen>
+
 
 </resources>
