@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sports_selector_titlelayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.wareshopc.app.truechalk.sportselector.SportSelectorActivity"
+    tools:showIn="@layout/app_bar_sport_selector">
+
+    <TextView
+        android:id="@+id/sport_selector_title_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/title_sport_selector_head"
+        android:textSize="45sp"
+        />
+
+</RelativeLayout>

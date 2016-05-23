@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/lighter_rustlike"
     tools:context="com.wareshopc.app.truechalk.sportselector.SportSelectorActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -20,6 +21,8 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/sport_selector_title"/>
 
     <include layout="@layout/content_sport_selector" />
 

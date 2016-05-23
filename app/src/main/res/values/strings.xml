@@ -54,6 +54,7 @@ The basketballChalk was discovered on %2$s. %3$s, and %4$s
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_sport_selector_head">Pick A Sport!</string>
     <string name="title_basketballitem_list">BasketballItems</string>
     <string name="title_basketballitem_detail">BasketballItem Detail</string>
 

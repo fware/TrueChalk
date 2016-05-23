@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.wareshopc.app.truechalk.R;
 import com.wareshopc.app.truechalk.sportselector.basketball.BasketballAccumulateActivity;
@@ -27,6 +28,7 @@ import com.wareshopc.app.truechalk.sportselector.basketball.BasketballReportActi
 public class SportSelectorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 //    private ImageView mSoccerImageView;
+    private TextView mTopTitleTxtView;
     private ImageButton mSoccerImageButton;
     private ImageButton mFootballImageButton;
     private ImageButton mBasketballImageButton;
@@ -40,6 +42,8 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
         setContentView(R.layout.activity_sport_selector);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);      //This is not necessary since I already created an actionbar in XML.
+
+        //mTopTitleTxtView = (TextView) findViewById(R.id.sport_selector_title_id);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +104,7 @@ public class SportSelectorActivity extends AppCompatActivity implements Navigati
                 //Intent i = new Intent(getApplicationContext(), BasketballChalkPagerActivity.class);
                 //i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, trueChalk.getId());
                 //startActivityForResult(i, 0);
-
+                //System.out.println("Call Basketball Intent from ImageButton");
                 myVib.vibrate(100);
                 Intent i = new Intent(getApplicationContext(), BasketballChalkListActivity.class);
                 startActivity(i);
