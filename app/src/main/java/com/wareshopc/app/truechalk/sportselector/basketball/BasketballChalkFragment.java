@@ -108,7 +108,7 @@ public class BasketballChalkFragment extends Fragment {
         LinearLayout lLayout = (LinearLayout) v.findViewById(R.id.llayout);
         lLayout.setBackgroundColor(getResources().getColor(R.color.lighter_rustlike));
 
-        //getActivity().setTitle(R.string.basketball_chalk_title);
+        getActivity().setTitle(R.string.basketball_chalk_title);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             if (NavUtils.getParentActivityName(getActivity()) != null) {

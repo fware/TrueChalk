@@ -3,6 +3,8 @@
     <!-- Strings for basketball -->
     <string name="basketball_chalk_title">Basketball Chalk</string>
     <string name="basketballchalk_title_label">Basketball</string>
+    <string name="basketballchalk_event_date_label">Date:</string>
+    <string name="basketballchalk_event_date_hint">Enter title for basketball event.</string>
     <string name="basketball_chalk_collection_title">Basketball Collection</string>
 
 </resources>
