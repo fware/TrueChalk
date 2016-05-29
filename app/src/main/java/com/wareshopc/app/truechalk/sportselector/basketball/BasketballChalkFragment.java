@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.hardware.Camera;
 import android.os.Build;
@@ -23,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -170,7 +172,7 @@ public class BasketballChalkFragment extends Fragment {
         //            }
         //        });
 
-        mPhotoButton = (ImageButton) v.findViewById(R.id.chalk_imageButton);
+        mPhotoButton = (ImageButton) v.findViewById(R.id.chalk_ImageButton);
         mPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -187,8 +189,10 @@ public class BasketballChalkFragment extends Fragment {
 
             }
         });
+        //mPhotoButton.setVisibility(View.INVISIBLE);
 
         mPhotoView = (ImageView) v.findViewById(R.id.chalk_ImageView);
+        mPhotoView.setImageResource(R.drawable.basketball_chalk_event_default);
         mPhotoView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Photo p = mBasketballChalk.getPhoto();
