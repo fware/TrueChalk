@@ -61,17 +61,6 @@
 
         </LinearLayout>
 
-
-        <!--ImageView
-            android:id="@+id/chalk_ImageView"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:scaleType="center"
-            android:layout_gravity="center"
-            android:src="@drawable/basketball_chalk_event_default"/-->
-        <!--android:background="@android:color/darker_gray"
-        android:scaleType="centerInside"-->
-
         <ImageView
             android:id="@+id/chalk_ImageView"
             android:layout_width="160dp"
@@ -97,22 +86,6 @@
             android:text="@string/start_collecting_stats"
             android:textSize="25sp"/>
 
-
-        <!--CheckBox
-            android:id="@+id/chalk_completed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/chalk_solved_label" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/chalk_event_reportButton"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/chalk_event_report_text"/-->
 
     </LinearLayout>
 </FrameLayout>

@@ -14,6 +14,9 @@ public class BasketballChalk {
     private static final String JSON_EVENTNAME = "eventname";
     private static final String JSON_DATE = "date";
     private static final String JSON_PHOTO = "photo";
+    private static final String JSON_PTS = "pts";           //points
+    private static final String JSON_RBS = "rbs";           //rebounds
+    private static final String JSON_ASTS = "asts";         //assists
     private static final String JSON_SOLVED = "solved";
     private static final String JSON_SUSPECT = "suspect";
 
@@ -22,12 +25,18 @@ public class BasketballChalk {
     private Date mDate;
     private boolean mSolved;
     private Photo mPhoto;
+    private int mPts;
+    private int mRBs;
+    private int mAsts;
     private String mSuspect;
 
     public BasketballChalk() {
         // Generate unique identifier
         mId = UUID.randomUUID();
         mDate = new Date();
+        mPts = 0;
+        mRBs = 0;
+        mAsts = 0;
     }
 
    // enum String {Basketball, Baseball, Football, Soccer, Vollyball};

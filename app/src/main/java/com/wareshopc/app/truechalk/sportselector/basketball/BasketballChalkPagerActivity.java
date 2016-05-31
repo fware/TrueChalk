@@ -44,7 +44,7 @@ public class BasketballChalkPagerActivity extends ActionBarActivity implements B
             }
         });
 
-        mViewPager
+        /*mViewPager
                 .setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                     public void onPageScrollStateChanged(int state) {
                     }
@@ -59,10 +59,9 @@ public class BasketballChalkPagerActivity extends ActionBarActivity implements B
                             setTitle(basketballChalk.getTitle());
                         }
                     }
-                });
+                });*/
 
-        UUID chalkId = (UUID) getIntent().getSerializableExtra(
-                BasketballChalkFragment.EXTRA_TRUECHALK_ID);
+        UUID chalkId = (UUID) getIntent().getSerializableExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID);
         for (int i = 0; i < mBasketballChalks.size(); i++) {
             if (mBasketballChalks.get(i).getId().equals(chalkId)) {
                 mViewPager.setCurrentItem(i);

@@ -54,6 +54,13 @@ The basketballChalk was discovered on %2$s. %3$s, and %4$s
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+
+    <!-- Sports Title Screens -->
+    <string name="title_basketball_chalk">Basketball Chalk</string>
+
+
+
     <string name="title_sport_selector_head">Pick A Sport!</string>
     <string name="title_basketballitem_list">BasketballItems</string>
     <string name="title_basketballitem_detail">BasketballItem Detail</string>
@@ -62,5 +69,8 @@ The basketballChalk was discovered on %2$s. %3$s, and %4$s
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="basketball_event_record">Basketball Event Record</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

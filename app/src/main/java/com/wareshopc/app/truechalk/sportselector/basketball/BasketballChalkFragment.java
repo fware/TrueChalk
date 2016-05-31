@@ -5,7 +5,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.hardware.Camera;
 import android.os.Build;
@@ -24,7 +23,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -53,24 +51,20 @@ public class BasketballChalkFragment extends Fragment {
     private static final int REQUEST_PHOTO = 2;
     //private static final int REQUEST_CONTACT = 3;
     private static final String DIALOG_IMAGE = "image";
+    private UUID mChalkId;
     private BasketballChalk mBasketballChalk;
     private EditText mTitleField;
     private Button mDateButton;
     private Button mTimeButton;
-    private CheckBox mSolvedCheckBox;
     private ImageButton mPhotoButton;
-    private ImageButton mFinishButton;
     private ImageView mPhotoView;
-    private Button mSuspectButton;
     private Callbacks mCallbacks;
 
-    public static BasketballChalkFragment newInstance(UUID chalkId) {
-        Bundle args = new Bundle();
-        args.putSerializable(EXTRA_TRUECHALK_ID, chalkId);
-
-        BasketballChalkFragment fragment = new BasketballChalkFragment();
-        fragment.setArguments(args);
-        return fragment;
+    /**
+     * Required interface for hosting activities.
+     */
+    public interface Callbacks {
+        void onChalkUpdated(BasketballChalk basketballChalk);
     }
 
     @Override
@@ -85,11 +79,20 @@ public class BasketballChalkFragment extends Fragment {
         mCallbacks = null;
     }
 
+    public static BasketballChalkFragment newInstance(UUID chalkId) {
+        Bundle args = new Bundle();
+        args.putSerializable(EXTRA_TRUECHALK_ID, chalkId);
+
+        BasketballChalkFragment fragment = new BasketballChalkFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID chalkId = (UUID) getArguments().getSerializable(EXTRA_TRUECHALK_ID);
-        mBasketballChalk = TrueChalkLab.get(getActivity()).getChalk(chalkId);
+        mChalkId = (UUID) getArguments().getSerializable(EXTRA_TRUECHALK_ID);
+        mBasketballChalk = TrueChalkLab.get(getActivity()).getChalk(mChalkId);
         setHasOptionsMenu(true);
     }
 
@@ -110,7 +113,7 @@ public class BasketballChalkFragment extends Fragment {
         LinearLayout lLayout = (LinearLayout) v.findViewById(R.id.llayout);
         lLayout.setBackgroundColor(getResources().getColor(R.color.lighter_rustlike));
 
-        getActivity().setTitle(R.string.basketball_chalk_title);
+        getActivity().setTitle(R.string.title_basketball_chalk);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             if (NavUtils.getParentActivityName(getActivity()) != null) {
@@ -161,17 +164,6 @@ public class BasketballChalkFragment extends Fragment {
 
         updateDateAndTime();
 
-        //mSolvedCheckBox = (CheckBox) v.findViewById(R.id.chalk_completed);
-        //mSolvedCheckBox.setChecked(mBasketballChalk.isSolved());
-        //mSolvedCheckBox
-        //        .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-        //            @Override
-        //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        //                mBasketballChalk.setSolved(isChecked);
-        //                mCallbacks.onChalkUpdated(mBasketballChalk);
-        //            }
-        //        });
-
         mPhotoButton = (ImageButton) v.findViewById(R.id.chalk_ImageButton);
         mPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,36 +210,10 @@ public class BasketballChalkFragment extends Fragment {
         mFinishButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent i = new Intent(getActivity(), BasketballAccumulateActivity.class);
+                    i.putExtra(EXTRA_TRUECHALK_ID, mChalkId);
                     startActivity(i);
                 }
             });
-
-
-        //Button reportButton = (Button) v.findViewById(R.id.chalk_event_reportButton);
-        //reportButton.setOnClickListener(new View.OnClickListener() {
-        //    public void onClick(View v) {
-        //        Intent i = new Intent(Intent.ACTION_SEND);
-        //        i.setType("text/plain");
-        //        i.putExtra(Intent.EXTRA_TEXT, getChalkEventReport());
-        //        i.putExtra(Intent.EXTRA_SUBJECT,
-        //                getString(R.string.chalk_report_subject));
-        //        i = Intent.createChooser(i, getString(R.string.send_report));
-        //        startActivity(i);
-        //    }
-        //});
-
-        //mSuspectButton = (Button) v.findViewById(R.id.chalk_eventButton);
-        //mSuspectButton.setOnClickListener(new View.OnClickListener() {
-        //    public void onClick(View v) {
-        //        Intent i = new Intent(Intent.ACTION_PICK,
-        //                ContactsContract.Contacts.CONTENT_URI);
-        //        startActivityForResult(i, REQUEST_CONTACT);
-        //    }
-        //});
-
-        //if (mBasketballChalk.getEvent() != null) {
-        //    mSuspectButton.setText(mBasketballChalk.getEvent());
-        //}
 
         return v;
     }
@@ -368,10 +334,4 @@ public class BasketballChalkFragment extends Fragment {
         return report;
     }
 
-    /**
-     * Required interface for hosting activities.
-     */
-    public interface Callbacks {
-        void onChalkUpdated(BasketballChalk basketballChalk);
-    }
 }
