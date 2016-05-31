@@ -29,8 +29,14 @@ import java.util.ArrayList;
 
 public class BasketballChalkListFragment extends ListFragment {
     private ArrayList<BasketballChalk> mBasketballChalks;
-    private boolean mSubtitleVisible;
     private Callbacks mCallbacks;
+
+    /**
+     * Required interface for hosting activities.
+     */
+    public interface Callbacks {
+        void onChalkSelected(BasketballChalk basketballChalk);
+    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -55,19 +61,12 @@ public class BasketballChalkListFragment extends ListFragment {
         setListAdapter(adapter);
 
         setRetainInstance(true);
-        mSubtitleVisible = false;
     }
 
     @TargetApi(11)
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.basketballchalk_list_fragment, parent, false);
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-        //    if (mSubtitleVisible) {
-        //        ((ActionBarActivity) getActivity()).getSupportActionBar().setSubtitle(R.string.subtitle);
-        //    }
-        //}
 
         ListView listView = (ListView) v.findViewById(android.R.id.list);
 
@@ -119,6 +118,18 @@ public class BasketballChalkListFragment extends ListFragment {
                 }
             });
         }
+
+        Button addAChalkButton = (Button) v.findViewById(android.R.id.empty);
+        addAChalkButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                BasketballChalk basketballChalk = new BasketballChalk();
+                TrueChalkLab.get(getActivity()).addChalk(basketballChalk);
+                Intent i = new Intent(getActivity(), BasketballChalkPagerActivity.class);
+                i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, basketballChalk.getId());
+                startActivityForResult(i, 0);
+            }
+        });
+
         return v;
     }
 
@@ -133,6 +144,11 @@ public class BasketballChalkListFragment extends ListFragment {
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        ((ChalkAdapter)getListAdapter()).notifyDataSetChanged();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         ((ChalkAdapter) getListAdapter()).notifyDataSetChanged();
@@ -142,24 +158,9 @@ public class BasketballChalkListFragment extends ListFragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_basketballchalk_list_menu, menu);
-
-        //MenuItem showSubtitle = menu.findItem(R.id.menu_item_show_subtitle);
-        //if (mSubtitleVisible && showSubtitle != null) {
-        //    showSubtitle.setTitle(R.string.hide_subtitle);
-        //}
-
-        Button addAChalkButton = (Button) getActivity().findViewById(android.R.id.empty);
-        addAChalkButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                BasketballChalk basketballChalk = new BasketballChalk();
-                TrueChalkLab.get(getActivity()).addChalk(basketballChalk);
-                Intent i = new Intent(getActivity(), BasketballChalkPagerActivity.class);
-                i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, basketballChalk.getId());
-                startActivityForResult(i, 0);
-            }
-        });
     }
 
+    @TargetApi(11)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -172,17 +173,6 @@ public class BasketballChalkListFragment extends ListFragment {
                 ((ChalkAdapter) getListAdapter()).notifyDataSetChanged();
                 mCallbacks.onChalkSelected(basketballChalk);
                 return true;
-            /*case R.id.menu_item_show_subtitle:
-                if (((ActionBarActivity) getActivity()).getSupportActionBar().getSubtitle() == null) {
-                    ((ActionBarActivity) getActivity()).getSupportActionBar().setSubtitle(R.string.subtitle);
-                    mSubtitleVisible = true;
-                    item.setTitle(R.string.hide_subtitle);
-                } else {
-                    ((ActionBarActivity) getActivity()).getSupportActionBar().setSubtitle(null);
-                    mSubtitleVisible = false;
-                    item.setTitle(R.string.show_subtitle);
-                }
-                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -209,24 +199,16 @@ public class BasketballChalkListFragment extends ListFragment {
         return super.onContextItemSelected(item);
     }
 
-    /**
-     * Required interface for hosting activities.
-     */
-    public interface Callbacks {
-        void onChalkSelected(BasketballChalk basketballChalk);
-    }
-
     private class ChalkAdapter extends ArrayAdapter<BasketballChalk> {
         public ChalkAdapter(ArrayList<BasketballChalk> basketballChalks) {
-            super(getActivity(), 0, basketballChalks);
+            super(getActivity(), android.R.layout.simple_list_item_1, basketballChalks);
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             // If we weren't given a view, inflate one
             if (convertView == null) {
-                convertView = getActivity().getLayoutInflater().inflate(
-                        R.layout.list_item_chalk, null);
+                convertView = getActivity().getLayoutInflater().inflate(R.layout.list_item_chalk, null);
             }
             // Configure the view for this BasketballChalk
             BasketballChalk c = getItem(position);
