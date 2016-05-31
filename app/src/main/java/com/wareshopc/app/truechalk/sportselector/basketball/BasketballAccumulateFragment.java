@@ -27,13 +27,13 @@ public class BasketballAccumulateFragment extends Fragment {
     //private OnFragmentInteractionListener mListener;
 
     private UUID mChalkId;
-    private ImageView mImageViewPlus1Arrow;
-    private ImageView mImageViewPlus2Arrow;
-    private ImageView mImageViewPlus3Arrow;
+    private ImageView mImageViewPoints1Up;
+    private ImageView mImageViewPoints2Up;
+    private ImageView mImageViewPoints3Up;
 
-    private ImageView mImageViewMinus1Arrow;
-    private ImageView mImageViewMinus2Arrow;
-    private ImageView mImageViewMinus3Arrow;
+    private ImageView mImageViewPoints1Down;
+    private ImageView mImageViewPoints2Down;
+    private ImageView mImageViewPoints3Down;
 
     private EditText mPointsEntry;
 
@@ -89,55 +89,55 @@ public class BasketballAccumulateFragment extends Fragment {
             }
         });
 
-        mImageViewPlus1Arrow = (ImageView) v.findViewById(R.id.imageview_plus1_arrow);
-        mImageViewPlus1Arrow.setImageResource(R.drawable.grayuparrow);
-        mImageViewPlus1Arrow.setClickable(true);
-        mImageViewPlus1Arrow.setOnClickListener(new View.OnClickListener() {
+        mImageViewPoints1Up = (ImageView) v.findViewById(R.id.imageview_points_1up);
+        mImageViewPoints1Up.setImageResource(R.drawable.grayuparrow);
+        mImageViewPoints1Up.setClickable(true);
+        mImageViewPoints1Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 System.out.println("ImageViewPlus1Arrow");
             }
         });
 
-        mImageViewMinus1Arrow = (ImageView) v.findViewById(R.id.imageview_minus1_arrow);
-        mImageViewMinus1Arrow.setImageResource(R.drawable.graydownarrow);
-        mImageViewMinus1Arrow.setClickable(true);
-        mImageViewMinus1Arrow.setOnClickListener(new View.OnClickListener() {
+        mImageViewPoints1Down = (ImageView) v.findViewById(R.id.imageview_points_1down);
+        mImageViewPoints1Down.setImageResource(R.drawable.graydownarrow);
+        mImageViewPoints1Down.setClickable(true);
+        mImageViewPoints1Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 System.out.println("ImageViewMinus1Arrow");
             }
         });
 
-        mImageViewPlus2Arrow = (ImageView) v.findViewById(R.id.imageview_plus2_arrow);
-        mImageViewPlus2Arrow.setImageResource(R.drawable.grayuparrow);
-        mImageViewPlus2Arrow.setClickable(true);
-        mImageViewPlus2Arrow.setOnClickListener(new View.OnClickListener() {
+        mImageViewPoints2Up = (ImageView) v.findViewById(R.id.imageview_points_2up);
+        mImageViewPoints2Up.setImageResource(R.drawable.grayuparrow);
+        mImageViewPoints2Up.setClickable(true);
+        mImageViewPoints2Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 System.out.println("ImageViewPlus2Arrow");
             }
         });
 
-        mImageViewMinus2Arrow = (ImageView) v.findViewById(R.id.imageview_minus2_arrow);
-        mImageViewMinus2Arrow.setImageResource(R.drawable.graydownarrow);
-        mImageViewMinus2Arrow.setClickable(true);
-        mImageViewMinus2Arrow.setOnClickListener(new View.OnClickListener() {
+        mImageViewPoints2Down = (ImageView) v.findViewById(R.id.imageview_points_2down);
+        mImageViewPoints2Down.setImageResource(R.drawable.graydownarrow);
+        mImageViewPoints2Down.setClickable(true);
+        mImageViewPoints2Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 System.out.println("ImageViewMinus2Arrow");
             }
         });
 
-        mImageViewPlus3Arrow = (ImageView) v.findViewById(R.id.imageview_plus3_arrow);
-        mImageViewPlus3Arrow.setImageResource(R.drawable.grayuparrow);
-        mImageViewPlus3Arrow.setClickable(true);
-        mImageViewPlus3Arrow.setOnClickListener(new View.OnClickListener() {
+        mImageViewPoints3Up = (ImageView) v.findViewById(R.id.imageview_points_3up);
+        mImageViewPoints3Up.setImageResource(R.drawable.grayuparrow);
+        mImageViewPoints3Up.setClickable(true);
+        mImageViewPoints3Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 System.out.println("ImageViewPlus3Arrow");
             }
         });
 
-        mImageViewMinus3Arrow = (ImageView) v.findViewById(R.id.imageview_minus3_arrow);
-        mImageViewMinus3Arrow.setImageResource(R.drawable.graydownarrow);
-        mImageViewMinus3Arrow.setClickable(true);
-        mImageViewMinus3Arrow.setOnClickListener(new View.OnClickListener() {
+        mImageViewPoints3Down = (ImageView) v.findViewById(R.id.imageview_points_3down);
+        mImageViewPoints3Down.setImageResource(R.drawable.graydownarrow);
+        mImageViewPoints3Down.setClickable(true);
+        mImageViewPoints3Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 System.out.println("ImageViewMinus3Arrow");
             }

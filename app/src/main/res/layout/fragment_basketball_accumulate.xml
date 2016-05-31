@@ -43,15 +43,15 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/imageview_points_1up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_med_horizontal_margin"
-                android:id="@+id/imageview_plus1_arrow" />
+                android:layout_marginBottom="@dimen/activity_med_horizontal_margin" />
 
             <ImageView
+                android:id="@+id/imageview_points_1down"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageview_minus1_arrow" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -62,15 +62,15 @@
             android:layout_marginLeft="@dimen/activity_med_horizontal_margin">
 
             <ImageView
+                android:id="@+id/imageview_points_2up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_med_horizontal_margin"
-                android:id="@+id/imageview_plus2_arrow" />
+                android:layout_marginBottom="@dimen/activity_med_horizontal_margin" />
 
             <ImageView
+                android:id="@+id/imageview_points_2down"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageview_minus2_arrow" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,15 +81,15 @@
             android:layout_marginLeft="@dimen/activity_med_horizontal_margin">
 
             <ImageView
+                android:id="@+id/imageview_points_3up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_med_horizontal_margin"
-                android:id="@+id/imageview_plus3_arrow" />
+                android:layout_marginBottom="@dimen/activity_med_horizontal_margin" />
 
             <ImageView
+                android:id="@+id/imageview_points_3down"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageview_minus3_arrow" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </LinearLayout>

@@ -39,7 +39,7 @@ public class BasketballChalk {
         mAsts = 0;
     }
 
-   // enum String {Basketball, Baseball, Football, Soccer, Vollyball};
+
 
     public BasketballChalk(JSONObject json) throws JSONException {
         mId = UUID.fromString(json.getString(JSON_ID));
@@ -48,6 +48,9 @@ public class BasketballChalk {
             if (json.has(JSON_PHOTO))
                 mPhoto = new Photo(json.getJSONObject(JSON_PHOTO));
         }
+        mPts = json.getInt(JSON_PTS);
+        mRBs = json.getInt(JSON_RBS);
+        mAsts = json.getInt(JSON_ASTS);
         //if (json.has(JSON_SUSPECT))
         //    mSuspect = json.getString(JSON_SUSPECT);
         //mSolved = json.getBoolean(JSON_SOLVED);
@@ -60,6 +63,9 @@ public class BasketballChalk {
         json.put(JSON_ID, mId.toString());
         json.put(JSON_EVENTNAME, mEventName);
         json.put(JSON_DATE, mDate.getTime());
+        json.put(JSON_PTS, mPts);
+        json.put(JSON_RBS, mRBs);
+        json.put(JSON_ASTS, mAsts);
         //json.put(JSON_SOLVED, mSolved);
         if (mPhoto != null)
             json.put(JSON_PHOTO, mPhoto.toJSON());
@@ -105,6 +111,30 @@ public class BasketballChalk {
 
     public void setDate(Date date) {
         mDate = date;
+    }
+
+    public int getPts() {
+        return mPts;
+    }
+
+    public void setPts(int pts) {
+        mPts = pts;
+    }
+
+    public int getRBs() {
+        return mRBs;
+    }
+
+    public void setRBs(int rbs) {
+        mRBs = rbs;
+    }
+
+    public int getAsts() {
+        return mAsts;
+    }
+
+    public void setAsts(int asts) {
+        mAsts = asts;
     }
 
     public boolean isSolved() {
