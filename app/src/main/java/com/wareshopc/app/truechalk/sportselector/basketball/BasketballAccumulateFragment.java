@@ -32,12 +32,20 @@ public class BasketballAccumulateFragment extends Fragment {
     private ImageView mImageViewPTS3Up;  private ImageView mImageViewPTS3Down;
     private EditText mPTSEntry;
 
-    private ImageView mImageViewOREB1Up;  private ImageView mImageViewREB1Down;
+    private ImageView mImageViewOREB1Up;  private ImageView mImageViewOREB1Down;
     private EditText mOREBEntry;
+
+    private ImageView mImageViewDREB1Up;  private ImageView mImageViewDREB1Down;
+    private EditText mDREBEntry;
 
     private ImageView mImageViewAST1Up;  private ImageView mImageViewAST1Down;
     private EditText mASTEntry;
 
+    private ImageView mImageViewBLK1Up;  private ImageView mImageViewBLK1Down;
+    private EditText mBLKEntry;
+
+    private ImageView mImageViewTO1Up;  private ImageView mImageViewTO1Down;
+    private EditText mTOEntry;
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -71,7 +79,7 @@ public class BasketballAccumulateFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_basketball_accumulate, container, false);
 
-        mPTSEntry = (EditText) v.findViewById(R.id.tv_points_entry);
+        mPTSEntry = (EditText) v.findViewById(R.id.et_pts);
         mPTSEntry.setText(Integer.toString(0));
         mPTSEntry.addTextChangedListener(new TextWatcher() {
             @Override
@@ -90,98 +98,61 @@ public class BasketballAccumulateFragment extends Fragment {
             }
         });
 
-        mImageViewPTS1Up = (ImageView) v.findViewById(R.id.imageview_points_1up);
+        mImageViewPTS1Up = (ImageView) v.findViewById(R.id.iv_pts_1up);
         mImageViewPTS1Up.setImageResource(R.drawable.grayuparrow);
         mImageViewPTS1Up.setClickable(true);
         mImageViewPTS1Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("ImageViewPlus1Arrow");
+                System.out.println("PTS +1");
             }
         });
 
-        mImageViewPTS1Down = (ImageView) v.findViewById(R.id.imageview_points_1down);
+        mImageViewPTS1Down = (ImageView) v.findViewById(R.id.iv_pts_1down);
         mImageViewPTS1Down.setImageResource(R.drawable.graydownarrow);
         mImageViewPTS1Down.setClickable(true);
         mImageViewPTS1Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("ImageViewMinus1Arrow");
+                System.out.println("PTS -1");
             }
         });
 
-        mImageViewPTS2Up = (ImageView) v.findViewById(R.id.imageview_points_2up);
+        mImageViewPTS2Up = (ImageView) v.findViewById(R.id.iv_pts_2up);
         mImageViewPTS2Up.setImageResource(R.drawable.grayuparrow);
         mImageViewPTS2Up.setClickable(true);
         mImageViewPTS2Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("ImageViewPlus2Arrow");
+                System.out.println("PTS +2");
             }
         });
 
-        mImageViewPTS2Down = (ImageView) v.findViewById(R.id.imageview_points_2down);
+        mImageViewPTS2Down = (ImageView) v.findViewById(R.id.iv_pts_2down);
         mImageViewPTS2Down.setImageResource(R.drawable.graydownarrow);
         mImageViewPTS2Down.setClickable(true);
         mImageViewPTS2Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("ImageViewMinus2Arrow");
+                System.out.println("PTS -2");
             }
         });
 
-        mImageViewPTS3Up = (ImageView) v.findViewById(R.id.imageview_points_3up);
+        mImageViewPTS3Up = (ImageView) v.findViewById(R.id.iv_pts_3up);
         mImageViewPTS3Up.setImageResource(R.drawable.grayuparrow);
         mImageViewPTS3Up.setClickable(true);
         mImageViewPTS3Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("ImageViewPlus3Arrow");
+                System.out.println("PTS +3");
             }
         });
 
-        mImageViewPTS3Down = (ImageView) v.findViewById(R.id.imageview_points_3down);
+        mImageViewPTS3Down = (ImageView) v.findViewById(R.id.iv_pts_3down);
         mImageViewPTS3Down.setImageResource(R.drawable.graydownarrow);
         mImageViewPTS3Down.setClickable(true);
         mImageViewPTS3Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("ImageViewMinus3Arrow");
+                System.out.println("PTS -3");
             }
         });
 
-        mOREBEntry = (EditText) v.findViewById(R.id.tv_oreb_entry);
-        mOREBEntry.setText(Integer.toString(0));
-        mOREBEntry.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // this space intentionally left blank
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // this one too
-            }
-        });
-
-        mImageViewOREB1Up = (ImageView) v.findViewById(R.id.imageview_oreb_1up);
-        mImageViewOREB1Up.setImageResource(R.drawable.grayuparrow);
-        mImageViewOREB1Up.setClickable(true);
-        mImageViewOREB1Up.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                System.out.println("ImageViewPlus1Arrow");
-            }
-        });
-
-        mImageViewREB1Down = (ImageView) v.findViewById(R.id.imageview_oreb_1down);
-        mImageViewREB1Down.setImageResource(R.drawable.graydownarrow);
-        mImageViewREB1Down.setClickable(true);
-        mImageViewREB1Down.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                System.out.println("ImageViewMinus1Arrow");
-            }
-        });
-
-        mASTEntry = (EditText) v.findViewById(R.id.tv_ast_entry);
+        mASTEntry = (EditText) v.findViewById(R.id.et_ast);
         mASTEntry.setText(Integer.toString(0));
         mASTEntry.addTextChangedListener(new TextWatcher() {
             @Override
@@ -200,21 +171,169 @@ public class BasketballAccumulateFragment extends Fragment {
             }
         });
 
-        mImageViewAST1Up = (ImageView) v.findViewById(R.id.imageview_ast_1up);
+        mImageViewAST1Up = (ImageView) v.findViewById(R.id.iv_ast_1up);
         mImageViewAST1Up.setImageResource(R.drawable.grayuparrow);
         mImageViewAST1Up.setClickable(true);
         mImageViewAST1Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("ImageViewPlus1Arrow");
+                System.out.println("AST +1");
             }
         });
 
-        mImageViewAST1Down = (ImageView) v.findViewById(R.id.imageview_ast_1down);
+        mImageViewAST1Down = (ImageView) v.findViewById(R.id.iv_ast_1down);
         mImageViewAST1Down.setImageResource(R.drawable.graydownarrow);
         mImageViewAST1Down.setClickable(true);
         mImageViewAST1Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("ImageViewMinus1Arrow");
+                System.out.println("AST -1");
+            }
+        });
+
+        mOREBEntry = (EditText) v.findViewById(R.id.et_oreb);
+        mOREBEntry.setText(Integer.toString(0));
+        mOREBEntry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // this space intentionally left blank
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // this one too
+            }
+        });
+
+        mImageViewOREB1Up = (ImageView) v.findViewById(R.id.iv_oreb_1up);
+        mImageViewOREB1Up.setImageResource(R.drawable.grayuparrow);
+        mImageViewOREB1Up.setClickable(true);
+        mImageViewOREB1Up.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("OREB +1");
+            }
+        });
+
+        mImageViewOREB1Down = (ImageView) v.findViewById(R.id.iv_oreb_1down);
+        mImageViewOREB1Down.setImageResource(R.drawable.graydownarrow);
+        mImageViewOREB1Down.setClickable(true);
+        mImageViewOREB1Down.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("OREB -1");
+            }
+        });
+
+        mBLKEntry = (EditText) v.findViewById(R.id.et_blk);
+        mBLKEntry.setText(Integer.toString(0));
+        mBLKEntry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // this space intentionally left blank
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // this one too
+            }
+        });
+
+        mImageViewBLK1Up = (ImageView) v.findViewById(R.id.iv_blk_1up);
+        mImageViewBLK1Up.setImageResource(R.drawable.grayuparrow);
+        mImageViewBLK1Up.setClickable(true);
+        mImageViewBLK1Up.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("BLK +1");
+            }
+        });
+
+        mImageViewBLK1Down = (ImageView) v.findViewById(R.id.iv_blk_1down);
+        mImageViewBLK1Down.setImageResource(R.drawable.graydownarrow);
+        mImageViewBLK1Down.setClickable(true);
+        mImageViewBLK1Down.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("BLK -1");
+            }
+        });
+
+        mDREBEntry = (EditText) v.findViewById(R.id.et_dreb);
+        mDREBEntry.setText(Integer.toString(0));
+        mDREBEntry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // this space intentionally left blank
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // this one too
+            }
+        });
+
+        mImageViewDREB1Up = (ImageView) v.findViewById(R.id.iv_dreb_1up);
+        mImageViewDREB1Up.setImageResource(R.drawable.grayuparrow);
+        mImageViewDREB1Up.setClickable(true);
+        mImageViewDREB1Up.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("DREB +1");
+            }
+        });
+
+        mImageViewDREB1Down = (ImageView) v.findViewById(R.id.iv_dreb_1down);
+        mImageViewDREB1Down.setImageResource(R.drawable.graydownarrow);
+        mImageViewDREB1Down.setClickable(true);
+        mImageViewDREB1Down.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("DREB -1");
+            }
+        });
+
+        mTOEntry = (EditText) v.findViewById(R.id.et_to);
+        mTOEntry.setText(Integer.toString(0));
+        mTOEntry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // this space intentionally left blank
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // this one too
+            }
+        });
+
+        mImageViewTO1Up = (ImageView) v.findViewById(R.id.iv_to_1up);
+        mImageViewTO1Up.setImageResource(R.drawable.grayuparrow);
+        mImageViewTO1Up.setClickable(true);
+        mImageViewTO1Up.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("TO +1");
+            }
+        });
+
+        mImageViewTO1Down = (ImageView) v.findViewById(R.id.iv_to_1down);
+        mImageViewTO1Down.setImageResource(R.drawable.graydownarrow);
+        mImageViewTO1Down.setClickable(true);
+        mImageViewTO1Down.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("TO -1");
             }
         });
 

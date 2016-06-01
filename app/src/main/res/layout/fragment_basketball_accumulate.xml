@@ -6,24 +6,26 @@
     android:paddingLeft="@dimen/activity_small_horizontal_margin"
     android:paddingRight="@dimen/activity_small_horizontal_margin"
     android:paddingTop="@dimen/nav_header_height"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_small_horizontal_margin"
     android:orientation="vertical">
 
-    <!-- Points layout -->
+    <!-- 1st Row layout -->
     <LinearLayout
-        android:id="@+id/pts_root_level"
+        android:id="@+id/ll_accum_1st_row"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_med_horizontal_margin">
 
+        <!-- Points layout -->
         <LinearLayout
-            android:id="@+id/pts_editview"
+            android:id="@+id/ll_pts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical">
 
             <TextView
+                android:id="@+id/tv_pts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_small_vertical_margin"
@@ -32,7 +34,7 @@
                 android:textSize="24sp"/>
 
             <EditText
-                android:id="@+id/tv_points_entry"
+                android:id="@+id/et_pts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_small_vertical_margin"
@@ -41,78 +43,80 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/pts_count1"
+            android:id="@+id/ll_pts_count1"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageview_points_1up"
+                android:id="@+id/iv_pts_1up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_med_horizontal_margin" />
 
             <ImageView
-                android:id="@+id/imageview_points_1down"
+                android:id="@+id/iv_pts_1down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/pts_count2"
+            android:id="@+id/ll_pts_count2"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_med_horizontal_margin">
 
             <ImageView
-                android:id="@+id/imageview_points_2up"
+                android:id="@+id/iv_pts_2up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_med_horizontal_margin" />
 
             <ImageView
-                android:id="@+id/imageview_points_2down"
+                android:id="@+id/iv_pts_2down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/pts_count3"
+            android:id="@+id/ll_pts_count3"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_med_horizontal_margin">
 
             <ImageView
-                android:id="@+id/imageview_points_3up"
+                android:id="@+id/iv_pts_3up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_med_horizontal_margin" />
 
             <ImageView
-                android:id="@+id/imageview_points_3down"
+                android:id="@+id/iv_pts_3down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <!-- Assists layout -->
+    <!-- 2nd Row layout -->
     <LinearLayout
-        android:id="@+id/ast_root_level"
+        android:id="@+id/ll_accum_2nd_half_1st_row"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_med_horizontal_margin">
+        android:layout_marginBottom="@dimen/activity_small_horizontal_margin">
 
+        <!-- Assists layout -->
         <LinearLayout
-            android:id="@+id/ast_editview"
+            android:id="@+id/ll_ast"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical">
 
             <TextView
+                android:id="@+id/tv_ast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_small_vertical_margin"
@@ -121,7 +125,7 @@
                 android:textSize="24sp"/>
 
             <EditText
-                android:id="@+id/tv_ast_entry"
+                android:id="@+id/et_ast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_small_vertical_margin"
@@ -130,32 +134,33 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ast_count1"
+            android:id="@+id/ll_ast_count1"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageview_ast_1up"
+                android:id="@+id/iv_ast_1up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_med_horizontal_margin" />
 
             <ImageView
-                android:id="@+id/imageview_ast_1down"
+                android:id="@+id/iv_ast_1down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <!-- Offensive Rebounds layout -->
         <LinearLayout
-            android:id="@+id/oreb_editview"
+            android:id="@+id/ll_oreb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_med_horizontal_margin"
             android:layout_gravity="center_horizontal|center_vertical">
 
             <TextView
+                android:id="@+id/tv_oreb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_small_vertical_margin"
@@ -164,28 +169,28 @@
                 android:textSize="24sp"/>
 
             <EditText
+                android:id="@+id/et_oreb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_small_vertical_margin"
-                android:id="@+id/tv_oreb_entry"
                 android:textSize="30sp"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/oreb_count1"
+            android:id="@+id/ll_oreb_count1"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageview_oreb_1up"
+                android:id="@+id/iv_oreb_1up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_med_horizontal_margin" />
 
             <ImageView
-                android:id="@+id/imageview_oreb_1down"
+                android:id="@+id/iv_oreb_1down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -202,20 +207,29 @@
 
     </LinearLayout-->
 
-    <!-- Blocks layout -->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/gray"/>
+
+    <!-- 2nd Row layout -->
     <LinearLayout
-        android:id="@+id/blk_root_level"
+        android:id="@+id/ll_accum_2nd_row"
         android:orientation="horizontal"
+        android:layout_marginTop="@dimen/activity_small_horizontal_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_med_horizontal_margin">
+        android:layout_marginBottom="@dimen/activity_small_horizontal_margin">
 
+        <!-- Blocks layout -->
         <LinearLayout
+            android:id="@+id/ll_blk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical">
 
             <TextView
+                android:id="@+id/tv_blk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_small_vertical_margin"
@@ -224,48 +238,100 @@
                 android:textSize="24sp"/>
 
             <EditText
+                android:id="@+id/et_blk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_med_horizontal_margin"
-                android:id="@+id/tv_blk_entry"
                 android:textSize="30sp"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/blk_count1"
+            android:id="@+id/ll_blk_count1"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageview_blk_1up"
+                android:id="@+id/iv_blk_1up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_med_horizontal_margin" />
 
             <ImageView
-                android:id="@+id/imageview_blk_1down"
+                android:id="@+id/iv_blk_1down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Defensive Rebounds layout -->
+        <LinearLayout
+            android:id="@+id/ll_dreb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_med_horizontal_margin"
+            android:layout_gravity="center_horizontal|center_vertical">
+
+            <TextView
+                android:id="@+id/tv_dreb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/activity_small_vertical_margin"
+                android:text="DREB:"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <EditText
+                android:id="@+id/et_dreb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/activity_small_vertical_margin"
+                android:textSize="30sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_dreb_count1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_dreb_1up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_med_horizontal_margin" />
+
+            <ImageView
+                android:id="@+id/iv_dreb_1down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <!-- Turnovers layout -->
-    <LinearLayout
-        android:id="@+id/to_root_level"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_med_horizontal_margin">
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/gray"/>
 
+    <!-- 3rd Row layout -->
+    <LinearLayout
+        android:id="@+id/ll_accum_3rd_row"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/activity_small_horizontal_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!-- Turnovers layout -->
         <LinearLayout
+            android:id="@+id/ll_to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical">
 
             <TextView
+                android:id="@+id/tv_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_small_vertical_margin"
@@ -274,28 +340,28 @@
                 android:textSize="24sp"/>
 
             <EditText
+                android:id="@+id/et_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_med_horizontal_margin"
-                android:id="@+id/tv_to_entry"
                 android:textSize="30sp"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/to_count1"
+            android:id="@+id/ll_to_count1"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageview_to_1up"
+                android:id="@+id/iv_to_1up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_med_horizontal_margin" />
 
             <ImageView
-                android:id="@+id/imageview_to_1down"
+                android:id="@+id/iv_to_1down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
