@@ -27,6 +27,7 @@ public class BasketballAccumulateFragment extends Fragment {
     //private OnFragmentInteractionListener mListener;
 
     private UUID mChalkId;
+    private BasketballChalk mChalk;
     private ImageView mImageViewPTS1Up;  private ImageView mImageViewPTS1Down;
     private ImageView mImageViewPTS2Up;  private ImageView mImageViewPTS2Down;
     private ImageView mImageViewPTS3Up;  private ImageView mImageViewPTS3Down;
@@ -70,12 +71,14 @@ public class BasketballAccumulateFragment extends Fragment {
         if (getArguments() != null) {
             mChalkId = (UUID) getArguments()
                     .getSerializable(BasketballChalkFragment.EXTRA_TRUECHALK_ID);
+            mChalk = BasketballChalkLab.get(getActivity()).getChalk(mChalkId);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_basketball_accumulate, container, false);
 

@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 
 import com.wareshopc.app.truechalk.R;
-import com.wareshopc.app.truechalk.TrueChalkLab;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -28,7 +27,7 @@ public class BasketballChalkPagerActivity extends ActionBarActivity implements B
         mViewPager.setId(R.id.viewPager);
         setContentView(mViewPager);
 
-        mBasketballChalks = TrueChalkLab.get(this).getTrueChalks();
+        mBasketballChalks = BasketballChalkLab.get(this).getBasketballChalks();
         FragmentManager fm = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
 

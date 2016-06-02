@@ -21,7 +21,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -33,7 +32,6 @@ import com.wareshopc.app.truechalk.Photo;
 import com.wareshopc.app.truechalk.PictureUtils;
 import com.wareshopc.app.truechalk.R;
 import com.wareshopc.app.truechalk.TimePickerFragment;
-import com.wareshopc.app.truechalk.TrueChalkLab;
 import com.wareshopc.app.truechalk.camera1.Camera1Fragment;
 import com.wareshopc.app.truechalk.camera1.Camera1Activity;
 import com.wareshopc.app.truechalk.camera2.Camera2Activity;
@@ -92,7 +90,7 @@ public class BasketballChalkFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mChalkId = (UUID) getArguments().getSerializable(EXTRA_TRUECHALK_ID);
-        mBasketballChalk = TrueChalkLab.get(getActivity()).getChalk(mChalkId);
+        mBasketballChalk = BasketballChalkLab.get(getActivity()).getChalk(mChalkId);
         setHasOptionsMenu(true);
     }
 
@@ -298,7 +296,7 @@ public class BasketballChalkFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        TrueChalkLab.get(getActivity()).saveTrueChalks();
+        BasketballChalkLab.get(getActivity()).saveBasketballChalks();
     }
 
     @Override
@@ -311,27 +309,6 @@ public class BasketballChalkFragment extends Fragment {
     public void onStop() {
         super.onStop();
         PictureUtils.cleanImageView(mPhotoView);
-    }
-
-    private String getChalkEventReport() {
-        String solvedString = null;
-        if (mBasketballChalk.isSolved()) {
-            solvedString = getString(R.string.chalk_report_solved);
-        } else {
-            solvedString = getString(R.string.chalk_report_unsolved);
-        }
-        String dateFormat = "EEE, MMM dd";
-        String dateString = DateFormat.format(dateFormat, mBasketballChalk.getDate()).toString();
-
-        String suspect = mBasketballChalk.getEvent();
-        if (suspect == null) {
-            suspect = getString(R.string.chalk_report_no_suspect);
-        } else {
-            suspect = getString(R.string.chalk_report_event, suspect);
-        }
-        String report = getString(R.string.chalk_report,
-                mBasketballChalk.getTitle(), dateString, solvedString, suspect);
-        return report;
     }
 
 }

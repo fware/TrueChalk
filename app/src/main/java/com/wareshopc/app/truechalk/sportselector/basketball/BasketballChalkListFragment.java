@@ -18,12 +18,10 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.wareshopc.app.truechalk.R;
-import com.wareshopc.app.truechalk.TrueChalkLab;
 
 import java.util.ArrayList;
 
@@ -55,7 +53,7 @@ public class BasketballChalkListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         getActivity().setTitle(R.string.basketball_chalk_collection_title);
-        mBasketballChalks = TrueChalkLab.get(getActivity()).getTrueChalks();
+        mBasketballChalks = BasketballChalkLab.get(getActivity()).getBasketballChalks();
 
         ChalkAdapter adapter = new ChalkAdapter(mBasketballChalks);
         setListAdapter(adapter);
@@ -99,10 +97,10 @@ public class BasketballChalkListFragment extends ListFragment {
                     switch (item.getItemId()) {
                         case R.id.menu_item_delete_chalk:
                             ChalkAdapter adapter = (ChalkAdapter) getListAdapter();
-                            TrueChalkLab trueChalkLab = TrueChalkLab.get(getActivity());
+                            BasketballChalkLab trueChalkLab = BasketballChalkLab.get(getActivity());
                             for (int i = adapter.getCount() - 1; i >= 0; i--) {
                                 if (getListView().isItemChecked(i)) {
-                                    trueChalkLab.deleteChalk(adapter.getItem(i));
+                                    trueChalkLab.deleteBasketballChalk(adapter.getItem(i));
                                 }
                             }
                             mode.finish();
@@ -123,7 +121,7 @@ public class BasketballChalkListFragment extends ListFragment {
         addAChalkButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 BasketballChalk basketballChalk = new BasketballChalk();
-                TrueChalkLab.get(getActivity()).addChalk(basketballChalk);
+                BasketballChalkLab.get(getActivity()).addBasketballChalk(basketballChalk);
                 Intent i = new Intent(getActivity(), BasketballChalkPagerActivity.class);
                 i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, basketballChalk.getId());
                 startActivityForResult(i, 0);
@@ -166,7 +164,7 @@ public class BasketballChalkListFragment extends ListFragment {
         switch (item.getItemId()) {
             case R.id.menu_item_new_chalk:
                 BasketballChalk basketballChalk = new BasketballChalk();
-                TrueChalkLab.get(getActivity()).addChalk(basketballChalk);
+                BasketballChalkLab.get(getActivity()).addBasketballChalk(basketballChalk);
                 /*Intent i = new Intent(getActivity(), BasketballChalkPagerActivity.class);
                 i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, basketballChalk.getId());
                 startActivityForResult(i, 0);*/
@@ -192,7 +190,7 @@ public class BasketballChalkListFragment extends ListFragment {
 
         switch (item.getItemId()) {
             case R.id.menu_item_delete_chalk:
-                TrueChalkLab.get(getActivity()).deleteChalk(basketballChalk);
+                BasketballChalkLab.get(getActivity()).deleteBasketballChalk(basketballChalk);
                 adapter.notifyDataSetChanged();
                 return true;
         }
@@ -218,9 +216,7 @@ public class BasketballChalkListFragment extends ListFragment {
             TextView dateTextView = (TextView) convertView
                     .findViewById(R.id.truechalk_list_item_dateTextView);
             dateTextView.setText(c.getDate().toString());
-            CheckBox solvedCheckBox = (CheckBox) convertView
-                    .findViewById(R.id.truechalk_list_item_solvedCheckBox);
-            solvedCheckBox.setChecked(c.isSolved());
+
             return convertView;
         }
     }

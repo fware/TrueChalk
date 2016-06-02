@@ -1,4 +1,4 @@
-package com.wareshopc.app.truechalk;
+package com.wareshopc.app.truechalk.sportselector.basketball;
 
 
 import android.content.Context;
@@ -19,17 +19,17 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 
-public class TrueChalkJSONSerializer {
+public class BasketballChalkJSONSerializer {
 
     private Context mContext;
     private String mFilename;
 
-    public TrueChalkJSONSerializer(Context c, String f) {
+    public BasketballChalkJSONSerializer(Context c, String f) {
         mContext = c;
         mFilename = f;
     }
 
-    public ArrayList<BasketballChalk> loadTrueChalks() throws IOException, JSONException {
+    public ArrayList<BasketballChalk> loadBasketballChalks() throws IOException, JSONException {
         ArrayList<BasketballChalk> basketballChalks = new ArrayList<BasketballChalk>();
         BufferedReader reader = null;
         try {
@@ -57,7 +57,7 @@ public class TrueChalkJSONSerializer {
         return basketballChalks;
     }
 
-    public void saveTrueChalks(ArrayList<BasketballChalk> basketballChalks) throws JSONException, IOException {
+    public void saveBasketballChalks(ArrayList<BasketballChalk> basketballChalks) throws JSONException, IOException {
         // Build an array in JSON
         JSONArray array = new JSONArray();
         for (BasketballChalk c : basketballChalks)

@@ -15,30 +15,35 @@ public class BasketballChalk {
     private static final String JSON_DATE = "date";
     private static final String JSON_PHOTO = "photo";
     private static final String JSON_PTS = "pts";           //points
-    private static final String JSON_RBS = "rbs";           //rebounds
-    private static final String JSON_ASTS = "asts";         //assists
-    private static final String JSON_SOLVED = "solved";
-    private static final String JSON_SUSPECT = "suspect";
+    private static final String JSON_OREB = "oreb";         //offensive rebounds
+    private static final String JSON_AST = "asts";         //assists
+    private static final String JSON_BLK = "blk";           //blocks
+    private static final String JSON_DREB = "dreb";         //defensive rebounds
+    private static final String JSON_TO = "to";             //turnovers
 
     private UUID mId;
     private String mEventName;
     private Date mDate;
     private boolean mSolved;
     private Photo mPhoto;
-    private int mPts;
-    private int mRBs;
-    private int mAsts;
-    private String mSuspect;
+    private int mPTS;
+    private int mOREB;
+    private int mAST;
+    private int mBLK;
+    private int mDREB;
+    private int mTO;
 
     public BasketballChalk() {
         // Generate unique identifier
         mId = UUID.randomUUID();
         mDate = new Date();
-        mPts = 0;
-        mRBs = 0;
-        mAsts = 0;
+        mPTS = 0;
+        mOREB = 0;
+        mAST = 0;
+        mBLK = 0;
+        mDREB = 0;
+        mTO = 0;
     }
-
 
 
     public BasketballChalk(JSONObject json) throws JSONException {
@@ -48,12 +53,12 @@ public class BasketballChalk {
             if (json.has(JSON_PHOTO))
                 mPhoto = new Photo(json.getJSONObject(JSON_PHOTO));
         }
-        mPts = json.getInt(JSON_PTS);
-        mRBs = json.getInt(JSON_RBS);
-        mAsts = json.getInt(JSON_ASTS);
-        //if (json.has(JSON_SUSPECT))
-        //    mSuspect = json.getString(JSON_SUSPECT);
-        //mSolved = json.getBoolean(JSON_SOLVED);
+        mPTS = json.getInt(JSON_PTS);
+        mOREB = json.getInt(JSON_OREB);
+        mAST = json.getInt(JSON_AST);
+        mBLK = json.getInt(JSON_BLK);
+        mDREB = json.getInt(JSON_DREB);
+        mTO = json.getInt(JSON_TO);
         mDate = new Date(json.getLong(JSON_DATE));
     }
 
@@ -63,13 +68,14 @@ public class BasketballChalk {
         json.put(JSON_ID, mId.toString());
         json.put(JSON_EVENTNAME, mEventName);
         json.put(JSON_DATE, mDate.getTime());
-        json.put(JSON_PTS, mPts);
-        json.put(JSON_RBS, mRBs);
-        json.put(JSON_ASTS, mAsts);
-        //json.put(JSON_SOLVED, mSolved);
+        json.put(JSON_PTS, mPTS);
+        json.put(JSON_OREB, mOREB);
+        json.put(JSON_AST, mAST);
+        json.put(JSON_BLK, mBLK);
+        json.put(JSON_DREB, mDREB);
+        json.put(JSON_TO, mTO);
         if (mPhoto != null)
             json.put(JSON_PHOTO, mPhoto.toJSON());
-        //json.put(JSON_SUSPECT, mSuspect);
         return json;
     }
 
@@ -79,13 +85,6 @@ public class BasketballChalk {
 
     public void setPhoto(Photo p) {
         mPhoto = p;
-    }
-
-    public String getEvent() {
-        return mSuspect;
-    }
-    public void setSuspect(String suspect) {
-        mSuspect = suspect;
     }
 
     @Override
@@ -114,35 +113,47 @@ public class BasketballChalk {
     }
 
     public int getPts() {
-        return mPts;
+        return mPTS;
     }
 
     public void setPts(int pts) {
-        mPts = pts;
+        mPTS = pts;
     }
 
-    public int getRBs() {
-        return mRBs;
+    public int getOREB() {
+        return mOREB;
     }
 
-    public void setRBs(int rbs) {
-        mRBs = rbs;
+    public void setOREB(int oreb) {
+        mOREB = oreb;
     }
 
-    public int getAsts() {
-        return mAsts;
+    public int getAST() {
+        return mAST;
     }
 
-    public void setAsts(int asts) {
-        mAsts = asts;
+    public void setAST(int asts) {
+        mAST = asts;
     }
 
-    public boolean isSolved() {
-        return mSolved;
+    public int getBLK() { return mBLK; }
+
+    public void setBLK(int blk) {
+        mBLK = blk;
     }
 
-    public void setSolved(boolean solved) {
-        mSolved = solved;
+    public int getTO() { return mTO; }
+
+    public void setTO(int to) {
+        mTO = to;
+    }
+
+    public int getDREB() {
+        return mDREB;
+    }
+
+    public void setDREB(int dreb) {
+        mDREB = dreb;
     }
 
 }
