@@ -33,7 +33,7 @@ public class BasketballChalkListFragment extends ListFragment {
      * Required interface for hosting activities.
      */
     public interface Callbacks {
-        void onChalkSelected(BasketballChalk basketballChalk);
+        void onBasketballChalkSelected(BasketballChalk basketballChalk);
     }
 
     @Override
@@ -138,7 +138,7 @@ public class BasketballChalkListFragment extends ListFragment {
         startActivity(i);
 
         //BasketballChalk c = ((ChalkAdapter) getListAdapter()).getItem(position);
-        //mCallbacks.onChalkSelected(c);
+        //mCallbacks.onBasketballChalkSelected(c);
     }
 
     @Override
@@ -169,7 +169,7 @@ public class BasketballChalkListFragment extends ListFragment {
                 i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, basketballChalk.getId());
                 startActivityForResult(i, 0);*/
                 ((ChalkAdapter) getListAdapter()).notifyDataSetChanged();
-                mCallbacks.onChalkSelected(basketballChalk);
+                mCallbacks.onBasketballChalkSelected(basketballChalk);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

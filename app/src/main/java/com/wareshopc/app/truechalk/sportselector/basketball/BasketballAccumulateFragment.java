@@ -1,5 +1,6 @@
 package com.wareshopc.app.truechalk.sportselector.basketball;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -47,6 +48,28 @@ public class BasketballAccumulateFragment extends Fragment {
 
     private ImageView mImageViewTO1Up;  private ImageView mImageViewTO1Down;
     private EditText mTOEntry;
+
+    //Callbacks mCallbacks;
+
+    /**
+     * Required interface for hosting activities.
+     */
+    /*public interface Callbacks {
+        void onBasketballChalkUpdated(BasketballChalk basketballChalk);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mCallbacks = (Callbacks)activity;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
+    }*/
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -76,7 +99,7 @@ public class BasketballAccumulateFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
@@ -84,10 +107,9 @@ public class BasketballAccumulateFragment extends Fragment {
 
         mPTSEntry = (EditText) v.findViewById(R.id.et_pts);
         mPTSEntry.setText(Integer.toString(0));
-        mPTSEntry.addTextChangedListener(new TextWatcher() {
+        /*mPTSEntry.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -99,14 +121,18 @@ public class BasketballAccumulateFragment extends Fragment {
             public void afterTextChanged(Editable s) {
                 // this one too
             }
-        });
+        });*/
 
         mImageViewPTS1Up = (ImageView) v.findViewById(R.id.iv_pts_1up);
         mImageViewPTS1Up.setImageResource(R.drawable.grayuparrow);
         mImageViewPTS1Up.setClickable(true);
         mImageViewPTS1Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("PTS +1");
+                int pts = mChalk.getPTS();
+                pts += 1;
+                mChalk.setPTS(pts);
+                //mCallbacks.onBasketballChalkUpdated(mChalk);
+                mPTSEntry.setText(Integer.toString(pts));
             }
         });
 

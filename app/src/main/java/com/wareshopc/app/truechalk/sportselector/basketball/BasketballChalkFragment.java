@@ -62,7 +62,7 @@ public class BasketballChalkFragment extends Fragment {
      * Required interface for hosting activities.
      */
     public interface Callbacks {
-        void onChalkUpdated(BasketballChalk basketballChalk);
+        void onBasketballChalkUpdated(BasketballChalk basketballChalk);
     }
 
     @Override
@@ -125,7 +125,7 @@ public class BasketballChalkFragment extends Fragment {
         mTitleField.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence c, int start, int before, int count) {
                 mBasketballChalk.setTitle(c.toString());
-                mCallbacks.onChalkUpdated(mBasketballChalk);
+                mCallbacks.onBasketballChalkUpdated(mBasketballChalk);
                 getActivity().setTitle(mBasketballChalk.getTitle());
             }
 
@@ -234,12 +234,12 @@ public class BasketballChalkFragment extends Fragment {
         if (requestCode == REQUEST_DATE) {
             Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mBasketballChalk.setDate(date);
-            mCallbacks.onChalkUpdated(mBasketballChalk);
+            mCallbacks.onBasketballChalkUpdated(mBasketballChalk);
             updateDateAndTime();
         } else if (requestCode == REQUEST_TIME) {
             Date date = (Date) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
             mBasketballChalk.setDate(date);
-            mCallbacks.onChalkUpdated(mBasketballChalk);
+            mCallbacks.onBasketballChalkUpdated(mBasketballChalk);
             updateDateAndTime();
         } else if (requestCode == REQUEST_PHOTO) {
             // Create a new Photo object and attach it to the chalk event
@@ -247,7 +247,7 @@ public class BasketballChalkFragment extends Fragment {
             if (filename != null) {
                 Photo p = new Photo(filename);
                 mBasketballChalk.setPhoto(p);
-                mCallbacks.onChalkUpdated(mBasketballChalk);
+                mCallbacks.onBasketballChalkUpdated(mBasketballChalk);
                 showPhoto();
             }
         }

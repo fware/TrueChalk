@@ -17,8 +17,7 @@ public class BasketballChalkPagerActivity extends ActionBarActivity implements B
     private ViewPager mViewPager;
     private ArrayList<BasketballChalk> mBasketballChalks;
 
-    public void onChalkUpdated(BasketballChalk basketballChalk) {
-    }
+    public void onBasketballChalkUpdated(BasketballChalk basketballChalk) {/* A default impl of this callback.*/}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

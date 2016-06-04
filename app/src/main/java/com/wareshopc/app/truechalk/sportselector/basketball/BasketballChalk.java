@@ -10,21 +10,20 @@ import java.util.UUID;
 
 public class BasketballChalk {
 
-    private static final String JSON_ID = "id";
-    private static final String JSON_EVENTNAME = "eventname";
-    private static final String JSON_DATE = "date";
-    private static final String JSON_PHOTO = "photo";
-    private static final String JSON_PTS = "pts";           //points
-    private static final String JSON_OREB = "oreb";         //offensive rebounds
-    private static final String JSON_AST = "asts";         //assists
-    private static final String JSON_BLK = "blk";           //blocks
-    private static final String JSON_DREB = "dreb";         //defensive rebounds
-    private static final String JSON_TO = "to";             //turnovers
+    public static final String JSON_ID = "id";              //chalk id
+    public static final String JSON_EVENTNAME = "eventname";//chalk event name
+    public static final String JSON_DATE = "date";          //date
+    public static final String JSON_PHOTO = "photo";        //photo
+    public static final String JSON_PTS = "pts";           //points
+    public static final String JSON_OREB = "oreb";         //offensive rebounds
+    public static final String JSON_AST = "asts";         //assists
+    public static final String JSON_BLK = "blk";           //blocks
+    public static final String JSON_DREB = "dreb";         //defensive rebounds
+    public static final String JSON_TO = "to";             //turnovers
 
     private UUID mId;
     private String mEventName;
     private Date mDate;
-    private boolean mSolved;
     private Photo mPhoto;
     private int mPTS;
     private int mOREB;
@@ -104,6 +103,8 @@ public class BasketballChalk {
         return mId;
     }
 
+    public void setId(UUID chalkid) { mId = chalkid; }
+
     public Date getDate() {
         return mDate;
     }
@@ -112,11 +113,11 @@ public class BasketballChalk {
         mDate = date;
     }
 
-    public int getPts() {
+    public int getPTS() {
         return mPTS;
     }
 
-    public void setPts(int pts) {
+    public void setPTS(int pts) {
         mPTS = pts;
     }
 

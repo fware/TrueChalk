@@ -52,7 +52,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".sportselector.basketball.BasketballChalkListActivity"
-            android:label="TrueChalkListActivity" >
+            android:label="BasketballChalkListActivity" >
+        </activity>
+        <activity
+            android:name=".sportselector.basketball.BasketballAccumulateActivity"
+            android:label="BasketballAccumulateActivity" >
         </activity>
 
         <activity
@@ -60,9 +64,6 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_basketball_report"
             android:theme="@style/FullscreenTheme" >
-        </activity>
-        <activity android:name=".sportselector.basketball.BasketballAccumulateActivity"
-            android:label="BasketballAccumulateActivity" >
         </activity>
 
         <!-- adding AWS services -->

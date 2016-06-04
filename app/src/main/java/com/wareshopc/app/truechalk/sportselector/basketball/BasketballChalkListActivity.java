@@ -21,7 +21,7 @@ public class BasketballChalkListActivity extends SingleFragmentActivity
         return R.layout.activity_masterdetail;
     }
 
-    public void onChalkSelected(BasketballChalk basketballChalk) {
+    public void onBasketballChalkSelected(BasketballChalk basketballChalk) {
         if (findViewById(R.id.detailFragmentContainer) == null) {
             // Start an instance of BasketballChalkPagerActivity
             Intent i = new Intent(this, BasketballChalkPagerActivity.class);
@@ -43,7 +43,7 @@ public class BasketballChalkListActivity extends SingleFragmentActivity
         }
     }
 
-    public void onChalkUpdated(BasketballChalk basketballChalk) {
+    public void onBasketballChalkUpdated(BasketballChalk basketballChalk) {
         FragmentManager fm = getSupportFragmentManager();
         BasketballChalkListFragment listFragment = (BasketballChalkListFragment)
                 fm.findFragmentById(R.id.fragmentContainer);
