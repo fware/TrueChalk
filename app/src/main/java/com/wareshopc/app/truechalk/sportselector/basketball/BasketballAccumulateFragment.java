@@ -1,13 +1,18 @@
 package com.wareshopc.app.truechalk.sportselector.basketball;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -51,6 +56,8 @@ public class BasketballAccumulateFragment extends Fragment {
 
     private ImageView mImageViewTO1Up;  private ImageView mImageViewTO1Down;
     private EditText mTOEntry;
+
+    private Button mSaveButton;
 
     //Callbacks mCallbacks;
 
@@ -112,23 +119,15 @@ public class BasketballAccumulateFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_basketball_accumulate, container, false);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            if (NavUtils.getParentActivityName(getActivity()) != null) {
+                // http://forums.bignerdranch.com/viewtopic.php?f=416&t=7919
+                ((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
+        }
+
         mPTSEntry = (EditText) v.findViewById(R.id.et_pts);
         mPTSEntry.setText(Integer.toString(0));
-        /*mPTSEntry.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // this space intentionally left blank
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // this one too
-            }
-        });*/
 
         mImageViewPTS1Up = (ImageView) v.findViewById(R.id.iv_pts_1up);
         mImageViewPTS1Up.setImageResource(R.drawable.grayuparrow);
@@ -138,8 +137,8 @@ public class BasketballAccumulateFragment extends Fragment {
                 int pts = mChalk.getPTS();
                 pts += 1;
                 mChalk.setPTS(pts);
-                //mCallbacks.onBasketballChalkUpdated(mChalk);
                 mPTSEntry.setText(Integer.toString(pts));
+                //mCallbacks.onBasketballChalkUpdated(mChalk);
             }
         });
 
@@ -148,7 +147,10 @@ public class BasketballAccumulateFragment extends Fragment {
         mImageViewPTS1Down.setClickable(true);
         mImageViewPTS1Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("PTS -1");
+                int pts = mChalk.getPTS();
+                pts -= 1;
+                mChalk.setPTS(pts);
+                mPTSEntry.setText(Integer.toString(pts));
             }
         });
 
@@ -157,7 +159,10 @@ public class BasketballAccumulateFragment extends Fragment {
         mImageViewPTS2Up.setClickable(true);
         mImageViewPTS2Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("PTS +2");
+                int pts = mChalk.getPTS();
+                pts += 2;
+                mChalk.setPTS(pts);
+                mPTSEntry.setText(Integer.toString(pts));
             }
         });
 
@@ -166,7 +171,10 @@ public class BasketballAccumulateFragment extends Fragment {
         mImageViewPTS2Down.setClickable(true);
         mImageViewPTS2Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("PTS -2");
+                int pts = mChalk.getPTS();
+                pts -= 2;
+                mChalk.setPTS(pts);
+                mPTSEntry.setText(Integer.toString(pts));
             }
         });
 
@@ -175,7 +183,10 @@ public class BasketballAccumulateFragment extends Fragment {
         mImageViewPTS3Up.setClickable(true);
         mImageViewPTS3Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("PTS +3");
+                int pts = mChalk.getPTS();
+                pts += 3;
+                mChalk.setPTS(pts);
+                mPTSEntry.setText(Integer.toString(pts));
             }
         });
 
@@ -184,35 +195,25 @@ public class BasketballAccumulateFragment extends Fragment {
         mImageViewPTS3Down.setClickable(true);
         mImageViewPTS3Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("PTS -3");
+                int pts = mChalk.getPTS();
+                pts -= 3;
+                mChalk.setPTS(pts);
+                mPTSEntry.setText(Integer.toString(pts));
             }
         });
 
         mASTEntry = (EditText) v.findViewById(R.id.et_ast);
         mASTEntry.setText(Integer.toString(0));
-        mASTEntry.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // this space intentionally left blank
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // this one too
-            }
-        });
 
         mImageViewAST1Up = (ImageView) v.findViewById(R.id.iv_ast_1up);
         mImageViewAST1Up.setImageResource(R.drawable.grayuparrow);
         mImageViewAST1Up.setClickable(true);
         mImageViewAST1Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("AST +1");
+                int ast = mChalk.getAST();
+                ast += 1;
+                mChalk.setAST(ast);
+                mASTEntry.setText(Integer.toString(ast));
             }
         });
 
@@ -221,35 +222,25 @@ public class BasketballAccumulateFragment extends Fragment {
         mImageViewAST1Down.setClickable(true);
         mImageViewAST1Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("AST -1");
+                int ast = mChalk.getAST();
+                ast -= 1;
+                mChalk.setAST(ast);
+                mASTEntry.setText(Integer.toString(ast));
             }
         });
 
         mOREBEntry = (EditText) v.findViewById(R.id.et_oreb);
         mOREBEntry.setText(Integer.toString(0));
-        mOREBEntry.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // this space intentionally left blank
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // this one too
-            }
-        });
 
         mImageViewOREB1Up = (ImageView) v.findViewById(R.id.iv_oreb_1up);
         mImageViewOREB1Up.setImageResource(R.drawable.grayuparrow);
         mImageViewOREB1Up.setClickable(true);
         mImageViewOREB1Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("OREB +1");
+                int oreb = mChalk.getOREB();
+                oreb += 1;
+                mChalk.setOREB(oreb);
+                mOREBEntry.setText(Integer.toString(oreb));
             }
         });
 
@@ -258,35 +249,25 @@ public class BasketballAccumulateFragment extends Fragment {
         mImageViewOREB1Down.setClickable(true);
         mImageViewOREB1Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("OREB -1");
+                int oreb = mChalk.getOREB();
+                oreb -= 1;
+                mChalk.setOREB(oreb);
+                mOREBEntry.setText(Integer.toString(oreb));
             }
         });
 
         mBLKEntry = (EditText) v.findViewById(R.id.et_blk);
         mBLKEntry.setText(Integer.toString(0));
-        mBLKEntry.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // this space intentionally left blank
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // this one too
-            }
-        });
 
         mImageViewBLK1Up = (ImageView) v.findViewById(R.id.iv_blk_1up);
         mImageViewBLK1Up.setImageResource(R.drawable.grayuparrow);
         mImageViewBLK1Up.setClickable(true);
         mImageViewBLK1Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("BLK +1");
+                int blk = mChalk.getBLK();
+                blk += 1;
+                mChalk.setBLK(blk);
+                mBLKEntry.setText(Integer.toString(blk));
             }
         });
 
@@ -295,35 +276,25 @@ public class BasketballAccumulateFragment extends Fragment {
         mImageViewBLK1Down.setClickable(true);
         mImageViewBLK1Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("BLK -1");
+                int blk = mChalk.getBLK();
+                blk -= 1;
+                mChalk.setBLK(blk);
+                mBLKEntry.setText(Integer.toString(blk));
             }
         });
 
         mDREBEntry = (EditText) v.findViewById(R.id.et_dreb);
         mDREBEntry.setText(Integer.toString(0));
-        mDREBEntry.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // this space intentionally left blank
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // this one too
-            }
-        });
 
         mImageViewDREB1Up = (ImageView) v.findViewById(R.id.iv_dreb_1up);
         mImageViewDREB1Up.setImageResource(R.drawable.grayuparrow);
         mImageViewDREB1Up.setClickable(true);
         mImageViewDREB1Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("DREB +1");
+                int dreb = mChalk.getDREB();
+                dreb += 1;
+                mChalk.setDREB(dreb);
+                mDREBEntry.setText(Integer.toString(dreb));
             }
         });
 
@@ -332,35 +303,25 @@ public class BasketballAccumulateFragment extends Fragment {
         mImageViewDREB1Down.setClickable(true);
         mImageViewDREB1Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("DREB -1");
+                int dreb = mChalk.getDREB();
+                dreb -= 1;
+                mChalk.setDREB(dreb);
+                mDREBEntry.setText(Integer.toString(dreb));
             }
         });
 
         mTOEntry = (EditText) v.findViewById(R.id.et_to);
         mTOEntry.setText(Integer.toString(0));
-        mTOEntry.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // this space intentionally left blank
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // this one too
-            }
-        });
 
         mImageViewTO1Up = (ImageView) v.findViewById(R.id.iv_to_1up);
         mImageViewTO1Up.setImageResource(R.drawable.grayuparrow);
         mImageViewTO1Up.setClickable(true);
         mImageViewTO1Up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("TO +1");
+                int to = mChalk.getTO();
+                to += 1;
+                mChalk.setTO(to);
+                mTOEntry.setText(Integer.toString(to));
             }
         });
 
@@ -369,7 +330,19 @@ public class BasketballAccumulateFragment extends Fragment {
         mImageViewTO1Down.setClickable(true);
         mImageViewTO1Down.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("TO -1");
+                int to = mChalk.getTO();
+                to -= 1;
+                mChalk.setTO(to);
+                mTOEntry.setText(Integer.toString(to));
+            }
+        });
+
+        mSaveButton = (Button) v.findViewById(R.id.chalk_save_stats);
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mDb.updateBasketballChalk(mChalk);
+                Intent intent = new Intent(getActivity(), BasketballChalkListActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -382,45 +355,5 @@ public class BasketballAccumulateFragment extends Fragment {
         mDb.updateBasketballChalk(mChalk);
         //BasketballChalkLab.get(getActivity()).saveBasketballChalks();
     }
-
-    /*
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }*/
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    //public interface OnFragmentInteractionListener {
-    //    // TODO: Update argument type and name
-    //    public void onFragmentInteraction(Uri uri);
-    //}
 
 }
