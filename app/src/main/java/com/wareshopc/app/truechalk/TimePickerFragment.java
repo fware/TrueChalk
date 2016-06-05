@@ -35,8 +35,7 @@ public class TimePickerFragment extends DialogFragment {
 			return;
 		Intent i = new Intent();
 		i.putExtra(EXTRA_TIME, mDate);
-		getTargetFragment().onActivityResult(getTargetRequestCode(),
-				resultCode, i);
+		getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, i);
 	}
 
 	@Override
@@ -53,8 +52,7 @@ public class TimePickerFragment extends DialogFragment {
 		View v = getActivity().getLayoutInflater().inflate(
 				R.layout.dialog_time, null);
 
-		TimePicker timePicker = (TimePicker) v
-				.findViewById(R.id.dialog_time_timePicker);
+		TimePicker timePicker = (TimePicker) v.findViewById(R.id.dialog_time_timePicker);
 
 		timePicker.setCurrentHour(hour);
 		timePicker.setCurrentMinute(minute);

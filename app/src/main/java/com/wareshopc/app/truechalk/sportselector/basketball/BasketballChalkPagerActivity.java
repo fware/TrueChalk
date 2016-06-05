@@ -8,14 +8,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 
 import com.wareshopc.app.truechalk.R;
+import com.wareshopc.app.truechalk.sportselector.basketball.db.BasketballDatabaseHandler;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class BasketballChalkPagerActivity extends ActionBarActivity implements BasketballChalkFragment.Callbacks {
 
     private ViewPager mViewPager;
-    private ArrayList<BasketballChalk> mBasketballChalks;
+    private List<BasketballChalk> mBasketballChalks;
 
     public void onBasketballChalkUpdated(BasketballChalk basketballChalk) {/* A default impl of this callback.*/}
 
@@ -26,7 +28,12 @@ public class BasketballChalkPagerActivity extends ActionBarActivity implements B
         mViewPager.setId(R.id.viewPager);
         setContentView(mViewPager);
 
-        mBasketballChalks = BasketballChalkLab.get(this).getBasketballChalks();
+        BasketballDatabaseHandler db;
+        db = new BasketballDatabaseHandler(this);
+
+        //mBasketballChalks = BasketballChalkLab.get(this).getBasketballChalks();
+        mBasketballChalks = db.getAllBasketballChalks();
+
         FragmentManager fm = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
 

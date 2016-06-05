@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class BasketballChalkLab {
@@ -53,7 +54,7 @@ public class BasketballChalkLab {
         }
     }
 
-    public ArrayList<BasketballChalk> getBasketballChalks() {
+    public List<BasketballChalk> getBasketballChalks() {
         return mBasketballChalks;
     }
 

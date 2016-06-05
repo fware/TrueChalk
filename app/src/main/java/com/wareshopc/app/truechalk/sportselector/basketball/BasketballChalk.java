@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class BasketballChalk {
 
-    public static final String JSON_ID = "id";              //chalk id
+    public static final String JSON_CHALKID = "chalkid";              //chalk id
     public static final String JSON_EVENTNAME = "eventname";//chalk event name
     public static final String JSON_DATE = "date";          //date
     public static final String JSON_PHOTO = "photo";        //photo
@@ -35,6 +35,7 @@ public class BasketballChalk {
     public BasketballChalk() {
         // Generate unique identifier
         mId = UUID.randomUUID();
+        //mEventName = "Event X";
         mDate = new Date();
         mPTS = 0;
         mOREB = 0;
@@ -46,7 +47,7 @@ public class BasketballChalk {
 
 
     public BasketballChalk(JSONObject json) throws JSONException {
-        mId = UUID.fromString(json.getString(JSON_ID));
+        mId = UUID.fromString(json.getString(JSON_CHALKID));
         if (json.has(JSON_EVENTNAME)) {
             mEventName = json.getString(JSON_EVENTNAME);
             if (json.has(JSON_PHOTO))
@@ -64,7 +65,7 @@ public class BasketballChalk {
 
     public JSONObject toJSON() throws JSONException {
         JSONObject json = new JSONObject();
-        json.put(JSON_ID, mId.toString());
+        json.put(JSON_CHALKID, mId.toString());
         json.put(JSON_EVENTNAME, mEventName);
         json.put(JSON_DATE, mDate.getTime());
         json.put(JSON_PTS, mPTS);
@@ -86,16 +87,16 @@ public class BasketballChalk {
         mPhoto = p;
     }
 
-    @Override
-    public String toString() {
+    //@Override
+    //public String toString() {
+    //    return mEventName;
+    //}
+
+    public String getEventName() {
         return mEventName;
     }
 
-    public String getTitle() {
-        return mEventName;
-    }
-
-    public void setTitle(String title) {
+    public void setEventName(String title) {
         mEventName = title;
     }
 
@@ -103,7 +104,9 @@ public class BasketballChalk {
         return mId;
     }
 
-    public void setId(UUID chalkid) { mId = chalkid; }
+    public void setId(UUID chalkid) {
+        mId = chalkid;
+    }
 
     public Date getDate() {
         return mDate;

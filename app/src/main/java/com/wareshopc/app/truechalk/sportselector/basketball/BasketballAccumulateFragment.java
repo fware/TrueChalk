@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.wareshopc.app.truechalk.R;
+import com.wareshopc.app.truechalk.sportselector.basketball.db.BasketballDatabaseHandler;
 
 import java.util.UUID;
 
@@ -29,6 +30,8 @@ public class BasketballAccumulateFragment extends Fragment {
 
     private UUID mChalkId;
     private BasketballChalk mChalk;
+    BasketballDatabaseHandler mDb;
+
     private ImageView mImageViewPTS1Up;  private ImageView mImageViewPTS1Down;
     private ImageView mImageViewPTS2Up;  private ImageView mImageViewPTS2Down;
     private ImageView mImageViewPTS3Up;  private ImageView mImageViewPTS3Down;
@@ -91,10 +94,14 @@ public class BasketballAccumulateFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mDb = new BasketballDatabaseHandler(getActivity());
+
         if (getArguments() != null) {
             mChalkId = (UUID) getArguments()
                     .getSerializable(BasketballChalkFragment.EXTRA_TRUECHALK_ID);
-            mChalk = BasketballChalkLab.get(getActivity()).getChalk(mChalkId);
+            //mChalk = BasketballChalkLab.get(getActivity()).getChalk(mChalkId);
+            mChalk = mDb.getBasketballChalk(mChalkId);
         }
     }
 
@@ -367,6 +374,13 @@ public class BasketballAccumulateFragment extends Fragment {
         });
 
         return v;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mDb.updateBasketballChalk(mChalk);
+        //BasketballChalkLab.get(getActivity()).saveBasketballChalks();
     }
 
     /*
