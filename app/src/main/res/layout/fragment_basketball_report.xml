@@ -3,13 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lighter_rustlike"
-    tools:context="com.wareshopc.app.truechalk.sportselector.basketball.BasketballReportActivity">
+    tools:context="com.wareshopc.app.truechalk.sportselector.basketball.BasketballReportFragment">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -64,7 +59,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Chalk Minutes"
                     android:textStyle="bold"
                     android:textSize="22sp"
                     android:layout_gravity="center_vertical" />
@@ -94,7 +88,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Chalk Points"
                     android:textStyle="bold"
                     android:textSize="22sp"
                     android:layout_gravity="center_vertical" />
@@ -125,7 +118,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Chalk Assists"
                     android:textStyle="bold"
                     android:textSize="22sp"
                     android:layout_gravity="center_vertical" />
@@ -156,7 +148,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Chalk O Rebounds"
                     android:textStyle="bold"
                     android:textSize="22sp"
                     android:layout_gravity="center_vertical" />
@@ -187,7 +178,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Chalk D Rebounds"
                     android:textStyle="bold"
                     android:textSize="22sp"
                     android:layout_gravity="center_vertical" />
@@ -218,7 +208,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Chalk Blocks"
                     android:textStyle="bold"
                     android:textSize="22sp"
                     android:layout_gravity="center_vertical" />
@@ -249,7 +238,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Chalk TO"
                     android:textStyle="bold"
                     android:textSize="22sp"
                     android:layout_gravity="center_vertical" />
@@ -259,14 +247,5 @@
         </LinearLayout>
 
     </FrameLayout>
-
-    <Button android:id="@+id/dummy_button"
-        style="?metaButtonBarButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="bottom|center_horizontal"
-        android:text="@string/dummy_button" />
-
 
 </FrameLayout>

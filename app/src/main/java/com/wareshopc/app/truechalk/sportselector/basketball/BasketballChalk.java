@@ -19,7 +19,7 @@ public class BasketballChalk {
     public static final String JSON_AST = "asts";         //assists
     public static final String JSON_BLK = "blk";           //blocks
     public static final String JSON_DREB = "dreb";         //defensive rebounds
-    public static final String JSON_TO = "to";             //turnovers
+    public static final String JSON_TO = "turnover";             //turnovers
 
     private UUID mId;
     private String mEventName;

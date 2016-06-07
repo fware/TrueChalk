@@ -12,8 +12,8 @@ public class BasketballAccumulateActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
-        UUID basketballId = (UUID) getIntent().getSerializableExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID);
-        return BasketballAccumulateFragment.newInstance(basketballId);
+        UUID chalkId = (UUID) getIntent().getSerializableExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID);
+        return BasketballAccumulateFragment.newInstance(chalkId);
     }
 
 }

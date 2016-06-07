@@ -143,8 +143,9 @@ public class BasketballChalkListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        System.out.println("--------------------------List Item:"+position);
+        BasketballChalk chalk = ((ChalkAdapter)getListAdapter()).getItem(position);
         Intent i = new Intent(getActivity(), BasketballReportActivity.class);
+        i.putExtra(BasketballChalkFragment.EXTRA_TRUECHALK_ID, chalk.getId());
         startActivity(i);
 
         //BasketballChalk c = ((ChalkAdapter) getListAdapter()).getItem(position);

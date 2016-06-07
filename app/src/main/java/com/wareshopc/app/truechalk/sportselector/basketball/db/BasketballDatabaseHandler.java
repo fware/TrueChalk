@@ -44,13 +44,15 @@ public class BasketballDatabaseHandler extends SQLiteOpenHelper {
                     + KEY_AST + INTEGER_TYPE + COMMA_SEP
                     + KEY_OREB + INTEGER_TYPE + COMMA_SEP
                     + KEY_BLK + INTEGER_TYPE + COMMA_SEP
-                    + KEY_DREB + INTEGER_TYPE //+ COMMA_SEP
+                    + KEY_DREB + INTEGER_TYPE + COMMA_SEP
+                    + KEY_TO + INTEGER_TYPE
+                     //+ COMMA_SEP
                     //+ KEY_TO + INTEGER_TYPE
                     + " )";
 
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "BasketballChalk.db";
 
     public BasketballDatabaseHandler(Context context) {
@@ -80,7 +82,7 @@ public class BasketballDatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_OREB, chalk.getOREB());
         values.put(KEY_BLK, chalk.getBLK());
         values.put(KEY_DREB, chalk.getDREB());
-        //values.put(KEY_TO, chalk.getTO());
+        values.put(KEY_TO, chalk.getTO());
 
         db.insert(TABLE_NAME, "null", values);
         db.close();
@@ -98,7 +100,7 @@ public class BasketballDatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_OREB, chalk.getOREB());
         values.put(KEY_BLK, chalk.getBLK());
         values.put(KEY_DREB, chalk.getDREB());
-        //values.put(KEY_TO, chalk.getTO());
+        values.put(KEY_TO, chalk.getTO());
 
         return db.update(TABLE_NAME, values, KEY_CHALKID + " = ?",
                 new String[] { chalk.getId().toString()});
@@ -115,7 +117,8 @@ public class BasketballDatabaseHandler extends SQLiteOpenHelper {
                 KEY_AST,
                 KEY_OREB,
                 KEY_BLK,
-                KEY_DREB
+                KEY_DREB,
+                KEY_TO
         };
 
         String selection = KEY_CHALKID + "=?";
@@ -143,7 +146,7 @@ public class BasketballDatabaseHandler extends SQLiteOpenHelper {
         chalk.setOREB(cursor.getInt(5));
         chalk.setBLK(cursor.getInt(6));
         chalk.setDREB(cursor.getInt(7));
-        //chalk.setTO(cursor.getInt(8));
+        chalk.setTO(cursor.getInt(8));
 
         return chalk;
     }
@@ -168,7 +171,7 @@ public class BasketballDatabaseHandler extends SQLiteOpenHelper {
                 chalk.setAST(cursor.getInt(6));
                 chalk.setBLK(cursor.getInt(7));
                 chalk.setDREB(cursor.getInt(8));
-                //chalk.setTO(cursor.getInt(9));
+                chalk.setTO(cursor.getInt(9));
 
                 basketballChalkList.add(chalk);
             } while (cursor.moveToNext());
